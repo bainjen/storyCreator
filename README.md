@@ -44,4 +44,4 @@ The following steps are only for _one_ of the group members to perform.
 
 ## Screenshots
 
-!["Screenshot of Entity Relationship Diagram"](https://github.com/bainjen/storyCreator/blob/master/docs ERD%20Midterm%20Story%20Creator.png)
+!["Screenshot of Entity Relationship Diagram"](https://github.com/bainjen/storyCreator/blob/master/docs/ERD%20Midterm%20Story%20Creator.png?raw=true)
