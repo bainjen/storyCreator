@@ -21,3 +21,11 @@ VALUES (3,
 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR7Rx4xDwu1TFyRh1erzikUYA6BCVO1guTGrA&usqp=CAU',
 '2019-02-12T08:00:00.000Z',
 '2020-02-20T09:00:00.000Z');
+
+INSERT INTO stories (name_id, beginning_story, title, img_url, created_at, completed_at)
+VALUES (3,
+'test...',
+'test',
+'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR7Rx4xDwu1TFyRh1erzikUYA6BCVO1guTGrA&usqp=CAU',
+'2019-02-12T08:00:00.000Z',
+'0');

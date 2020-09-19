@@ -2,30 +2,28 @@ const express = require('express');
 const router = express.Router();
 
 const login = (db) => {
-  router.get('/', (req, res) => {
-    res.render('login');
-    console.log("hello where am I ")
-  })
-  return router;
+
+  router.post('/:id', (req, res) => {
+    req.session.user_id = req.params.id
+    res.redirect('/')
+})
+return router;
 }
 
 module.exports = login;
 
 
-router.get("/", (req, res) => {
-  db.query(`SELECT * FROM users;`)
-    .then(data => {
-      const users = data.rows;
-      res.json({ users });
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
-});
-return router;
+//+++++++LOGIN ROUTES+++++++
+//POST to LOGIN/:id --> this is our fake login - we don't need a get request for a login page (edit)
+//When a user logs in, they should see: a list of stories + story status (completed or in progress)
+//POST to LOGOUT --> If we have time, redirect to a fake login page (edit)
 
+
+
+//router.get('/login/:id', req, res) => {
+//  req.session.user_id = req.params.id
+//  res.redirect('/')
+// })
 
 
 // const postRouter = (db) => {
