@@ -45,9 +45,9 @@ const loginRoutes = require("./routes/login-router");
 // Note: Feel free to replace the example routes below with your own
 
 //++++ASK MENTOR ABOUT API REFERENCE+++++
-app.use("/stories", storiesRoutes(db));
-app.use("/users", usersRoutes(db));
-app.use("/login", loginRoutes(db));
+// app.use("/stories", storiesRoutes(db));
+app.use("/users", usersRoutes);
+// app.use("/login", loginRoutes(db));
 // app.use("/api/stories-router", storiesRoutes(db));
 // app.use("/api/widgets", widgetsRoutes(db));
 
