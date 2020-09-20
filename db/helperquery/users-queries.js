@@ -3,6 +3,8 @@ const dbParams = require('../../lib/db.js');
 const db = new Pool(dbParams);
 db.connect();
 
+// const pool = require('../../lib/db.js')
+
 const getUsers = () => {
   return db.query("SELECT * FROM users;")
     .then((response) => {

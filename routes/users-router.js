@@ -14,7 +14,8 @@ router.get('/', (req, res) => {
   getUsers()
     .then((users) => {
       res.json({ users });
-    });
+    })
+    .catch((err) => console.log("Error for getUsers", err));
 });
 
 // create a fake route to test to make sure its working
@@ -29,6 +30,7 @@ router.get('/:id', (req, res) => {
     .then((user) => {
       res.json({ user });
     })
+    .catch((err) => console.log("Error for getUsersById", err));
 });
 
 module.exports = router;

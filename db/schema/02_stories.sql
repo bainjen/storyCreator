@@ -3,10 +3,10 @@ DROP TABLE IF EXISTS stories CASCADE;
 CREATE TABLE stories (
   id SERIAL PRIMARY KEY NOT NULL,
   name_id INTEGER REFERENCES users(id) NOT NULL,
-  beginning_story TEXT NOT NULL,
+  beginning_story TEXT NOT NULL, 
   title VARCHAR(255) NOT NULL,
   img_url VARCHAR(255) NOT NULL,
   created_at TIMESTAMP NOT NULL,
-  completed BOOLEAN NOT NULL DEFAULT FALSE,
+  published BOOLEAN NOT NULL DEFAULT FALSE,
   completed_at TIMESTAMP NOT NULL
 );

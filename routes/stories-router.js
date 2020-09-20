@@ -1,3 +1,49 @@
+const express = require('express');
+const router  = express.Router();
+const { browseStory, getStoryById, addStory } = require('../db/helperquery/story-query');
+
+// helper functions
+// to grab all stories (GET)
+// to grab story/:id to read (GET)
+// we have to GET the FORM(to start the story) (GET)
+// we have to POST the FROM(to post the story) (POST)
+// to update stories (POST)
+// to publish the final story (POST)
+
+router.get('/', (req, res) => {
+  browseStory()
+    .then((stories) => {
+      res.json({ stories })
+    })
+    .catch((err) => console.log("Error for browseStory", err));
+});
+
+router.get('/:id', (req, res) => {
+  getStoryById(req.params.id)
+    .then((stories) => {
+      res.json({ stories })
+    })
+    .catch((err) => console.log("Error for getStoryByID", err));
+});
+
+//need to ask how to test this fuctionality
+router.post('/stories', (req, res) => {
+  const userId = req.params.id;
+  addStory({ ...req.body, username_id: userId })
+    .then(story => {
+      res.send( { story });
+    })
+    .catch((err) => console.log("Error for addStory", err));
+});
+
+  // return router;
+
+
+module.exports = router;
+
+
+
+
 //+++++++STORIES ROUTES+++++++
 
 //NEW STORY (ADD) POST /stories/:id
@@ -18,4 +64,5 @@
 //new
 //listing(reading)/adding/updating(editing)/deleting/showing(browse)
 
+//BREAD AND CRUD
 
