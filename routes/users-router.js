@@ -25,6 +25,7 @@ router.get('/test', (req, res) => {
 });
 
 // GET /users/:id
+//need a way to save this throughout the application as the user cookie
 router.get('/:id', (req, res) => {
   getUserById(req.params.id)
     .then((user) => {

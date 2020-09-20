@@ -32,6 +32,7 @@ const addStory = function(story) {
 
   // starting params are empty
   const queryParams = [];
+  console.log(story)
   for (const key in story) {
     queryParams.push(story[key])
   }
@@ -43,7 +44,8 @@ const addStory = function(story) {
   RETURNING *;
   `;
 
-  return pool.query(queryString, queryParams)
+  console.log(queryParams)
+  return db.query(queryString, queryParams)
   .then(res => {
     return res.rows;
   })

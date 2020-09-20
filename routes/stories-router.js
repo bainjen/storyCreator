@@ -19,6 +19,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
+  console.log('req.params.id', req.params.id)
   getStoryById(req.params.id)
     .then((stories) => {
       res.json({ stories })
@@ -26,10 +27,15 @@ router.get('/:id', (req, res) => {
     .catch((err) => console.log("Error for getStoryByID", err));
 });
 
+// curl -d "title=some title&beginning_story=this is something&img_url= &published=true&completed_at=2018-02-12T08:40:00.000Z&created_at=2018-02-12T08:40:00.000Z" -X POST http://localhost:8080/stories
+
 //need to ask how to test this fuctionality
-router.post('/stories', (req, res) => {
-  const userId = req.params.id;
-  addStory({ ...req.body, username_id: userId })
+router.post('/', (req, res) => {
+  //need a way to reference who is currently logged in
+  //need a cookie to save user id
+  const userId = 1;
+  console.log('re.body log', req.body)
+  addStory({ ...req.body, name_id: userId })
     .then(story => {
       res.send( { story });
     })
