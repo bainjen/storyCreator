@@ -1,16 +1,47 @@
 const express = require('express');
 const router = express.Router();
+const { getUsers, getUserById } = require('../db/helperquery/users-queries');
+const { browseStory, getStoryById, addStory } = require('../db/helperquery/story-query');
 
-const login = (db) => {
+  router.get('/', (req, res) => {
+    // browseStory()
+    //   .then(story)
+    // res.render('storypage');
+    // console.log("CHECK");
+    res.render('login')
+    // return router;
+  })
 
-  router.post('/:id', (req, res) => {
-    req.session.user_id = req.params.id
-    res.redirect('/')
-})
-return router;
-}
+  router.post('/', (req, res) => {
+    req.session.userid = req.body.userid;
 
-module.exports = login;
+    res.redirect('/stories')
+  })
+
+  // router.post('/', (req, res) => {
+  //   const userID = getUserById(req.params.userid)
+  //   console.log("DO you get me the ID", getUserById(req.params.userid))
+  //   // const userid = req.body.userid;
+  //   // const userPW = req.body.password;
+  //   // const userID = getUserById(id);
+  //   // req.session.userid = userID.id;
+  //   res.redirect('/storypage');
+  // })
+
+  // router.post('/', (req, res) => {
+  //   console.log("WHAT IS GOING HERE req", req)
+  //   console.log("PART 2 res", res);
+  //   getUserById(req.params.userid)
+  //     .then(story => {
+  //       res.render('storypage')
+  //    })
+  //  });
+
+
+
+
+
+module.exports = router;
 
 
 //+++++++LOGIN ROUTES+++++++
