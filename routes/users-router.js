@@ -24,16 +24,6 @@ router.get('/test', (req, res) => {
       res.json({ result: true });
 });
 
-// GET /users/:id
-//need a way to save this throughout the application as the user cookie
-// router.get('/:id', (req, res) => {
-//   getUserById(req.params.id)
-//     .then((user) => {
-//       res.json({ user });
-//     })
-//     .catch((err) => console.log("Error for getUsersById", err));
-// });
-
 router.get('/:id', (req, res) => {
   //make a helper function that queries the database to get stories by user id.
   const userid = req.session.userid;
@@ -47,24 +37,3 @@ router.get('/:id', (req, res) => {
 
 module.exports = router;
 
-
-
-
-
-
-
-// module.exports = (db) => {
-//   router.get("/", (req, res) => {
-//     db.query(`SELECT * FROM users;`)
-//       .then(data => {
-//         const users = data.rows;
-//         res.json({ users });
-//       })
-//       .catch(err => {
-//         res
-//           .status(500)
-//           .json({ error: err.message });
-//       });
-//   });
-//   return router;
-// };
