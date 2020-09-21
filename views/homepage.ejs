@@ -1,40 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel='stylesheet' href='styles/layout.css'>
   <title>Story Page</title>
 </head>
+
 <body>
   <h1>World's best Author's come here</h1>
   <a href="/mystories">my stories</a>
   <section>
     <div class='browse-stories'>
       <% for(let story of stories) { %>
-        <div class='story-box'>
-          <div class='img-box'>
-            <img src=<%= story.img_url %>>
-          </div>
-          <div class='story-info'
-            <h1><%= story.title %></h1>
-            <p><%= story.beginning_story %> </p>
-          </div>
+      <div class='story-box'>
+        <div class='img-box'>
+          <img src=<%= story.img_url %>>
         </div>
+        <div class='story-info' <h1><%= story.title %></h1>
+          <p><%= story.beginning_story %> </p>
+        </div>
+      </div>
       <% } %>
     </div>
-    <form action="/action_page.php" method="GET">
-      <label for="title">Title:</label>
-      <input type="text" id="title" name="title"><br><br>
-      <label for="content">Content</label>
-      <input type="text" id="content" name="content"><br><br>
-      <label for="book_img">Enter A book Image if you like?</label>
-      <input type="url" id="book_img" name="book_img"><br><br>
-      <input type="submit" value="Submit">
-    </form>
   </section>
+  <form action="/action_page.php" method="GET">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title"><br><br>
+    <label for="content">Content</label>
+    <input type="text" id="content" name="content"><br><br>
+    <label for="book_img">Enter A book Image if you like?</label>
+    <input type="url" id="book_img" name="book_img"><br><br>
+    <input type="submit" value="Submit">
+  </form>
 </body>
+
 </html>
-check condintions use this ejs file
-GET /stories --> render home browse (all stories that are not the user's)
-GET /mystories --> render my own stories
+<!-- check condintions use this ejs file
+GET /stories -->
+<!-- render home browse (all stories that are not the user's)
+GET /mystories -->
+<!-- render my own stories -->
