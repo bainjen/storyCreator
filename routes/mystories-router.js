@@ -6,6 +6,8 @@ const { getStoryById } = require('../db/helperquery/story-query')
 // get all stories for a single users
 //get all contributions for a single user
 
+//shows a list of all author's stories
+//convert to render on homepage.ejs rather than mystory.ejs
 router.get('/', (req, res) => {
   getUserStoriesByUserId(req.session.userid)
     .then((myStories) => {
@@ -14,7 +16,7 @@ router.get('/', (req, res) => {
       // console.log(myStories);
       console.log('TEMPLATEVARS', templateVars);
       // res.json({ stories })
-      res.render('mystory', templateVars)
+      res.render('homepage', templateVars)
     })
     .catch((err) => console.log("Error for getUserStoriesByUserId", err));
 });
@@ -36,7 +38,7 @@ router.get('/:id', (req, res) => {
       templateVars.contributions = contributions;
     })
     .catch((err) => console.log("Error for getStoryContributions", err));
-    res.render('author-story', templateVars)
+  res.render('author-story', templateVars)
 });
 
 module.exports = router;

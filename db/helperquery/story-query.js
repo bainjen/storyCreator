@@ -18,6 +18,15 @@ const browseStory = () => {
   .catch((err) => console.log("Error for browseStory", err));
 }
 
+//grab stories that don't belon to logged in user
+const browseSelectStories = (id) => {
+  return db.query("SELECT * FROM stories WHERE NOT id = $1;", [id])
+  .then((response) => {
+    return response.rows;
+  })
+  .catch((err) => console.log("Error for browseSelectStories", err));
+}
+
 // to grab story/:id to read (GET)
 const getStoryById = (id) => {
   return db.query("SELECT * FROM stories WHERE id = $1;", [id])
@@ -56,7 +65,8 @@ const addStory = function(story) {
 module.exports = {
   browseStory,
   getStoryById,
-  addStory
+  addStory,
+  browseSelectStories
 }
 
 
