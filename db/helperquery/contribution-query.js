@@ -15,7 +15,6 @@ db.connect();
 
 const getStoryContributions = (id) => {
   const queryString = `SELECT stories.id, stories.title, stories.beginning_story,
-  SELECT stories.id, stories.title, stories.beginning_story,
   contributions.text_addon, users.name
   FROM contributions
   JOIN users ON users.id = name_id
