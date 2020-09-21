@@ -10,26 +10,18 @@ const { browseStory, getStoryById, addStory } = require('../db/helperquery/story
 // to update stories (POST)
 // to publish the final story (POST)
 
-// router.get('/', (req, res) => {
-//   browseStory()
-//     .then((story) => {
-//       let templateVars = {story}
-//       res.render('storypage')
-//     })
-//     .catch((err) => console.log("Error for browseStory", err));
-// });
-
+//this is GET /stories
 router.get('/', (req, res) => {
   browseStory()
     .then((stories) => {
       const templateVars = {stories: stories}
-      console.log("TEMPALTEVARS", templateVars)
       // res.json({ stories })
       res.render('storypage', templateVars)
     })
     .catch((err) => console.log("Error for browseStory", err));
 });
 
+//this is where we go when we click on a specific story (id linked to story)
 router.get('/:id', (req, res) => {
   console.log('req.params.id', req.params.id)
   getStoryById(req.params.id)
@@ -38,6 +30,7 @@ router.get('/:id', (req, res) => {
     })
     .catch((err) => console.log("Error for getStoryByID", err));
 });
+
 
 // curl -d "title=some title&beginning_story=this is something&img_url= &published=true&completed_at=2018-02-12T08:40:00.000Z&created_at=2018-02-12T08:40:00.000Z" -X POST http://localhost:8080/stories
 

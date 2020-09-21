@@ -7,7 +7,7 @@
 
 const express = require('express');
 const router  = express.Router();
-const { getUsers, getUserById } = require('../db/helperquery/users-queries');
+const { getUsers, getUserById, getUserStoriesByUserId } = require('../db/helperquery/users-queries');
 
 // GET /users/
 router.get('/', (req, res) => {
@@ -26,13 +26,24 @@ router.get('/test', (req, res) => {
 
 // GET /users/:id
 //need a way to save this throughout the application as the user cookie
+// router.get('/:id', (req, res) => {
+//   getUserById(req.params.id)
+//     .then((user) => {
+//       res.json({ user });
+//     })
+//     .catch((err) => console.log("Error for getUsersById", err));
+// });
+
 router.get('/:id', (req, res) => {
-  getUserById(req.params.id)
-    .then((user) => {
-      res.json({ user });
-    })
-    .catch((err) => console.log("Error for getUsersById", err));
-});
+  //make a helper function that queries the database to get stories by user id.
+  const userid = req.session.userid;
+  getUserStoriesByUserId(userid)
+    .then((myStories) => {
+    // console.log(myStories)
+    res.json({myStories})
+  })
+  .catch((err) => console.log("getUserStoriesByUserId", err));
+})
 
 module.exports = router;
 
