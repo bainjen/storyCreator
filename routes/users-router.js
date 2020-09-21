@@ -24,6 +24,7 @@ router.get('/test', (req, res) => {
       res.json({ result: true });
 });
 
+//nothing showing in users/:id
 router.get('/:id', (req, res) => {
   //make a helper function that queries the database to get stories by user id.
   const userid = req.session.userid;
