@@ -13,6 +13,7 @@ const { browseStory, getStoryById, addStory } = require('../db/helperquery/story
   })
 
   router.post('/', (req, res) => {
+    req.session.password =req.body.password;
     req.session.userid = req.body.userid;
     res.redirect('/stories')
   })
