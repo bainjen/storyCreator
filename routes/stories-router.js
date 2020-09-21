@@ -1,6 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 const { browseStory, getStoryById, addStory, browseSelectStories} = require('../db/helperquery/story-query');
+const { getStoryContributions } = require('../db/helperquery/contribution-query');
 
 // helper functions
 // to grab all stories (GET)
@@ -29,20 +30,49 @@ router.get('/', (req, res) => {
 });
 
 // GET /stories/:id
-router.get('/:id', (req, res) => {
-  console.log('req.params.id', req.params.id)
-  getStoryById(req.params.id)
-    .then((readstory) => {
-      // res.json({ stories })
-      const templateVars = { readstory: readstory }
-      console.log(templateVars)
-      res.render('readstory', templateVars)
-    })
-    .catch((err) => console.log("Error for getStoryByID", err));
-});
+// router.get('/:id', (req, res) => {
+//   console.log('req.params.id', req.params.id)
+//   getStoryById(req.params.id)
+//     .then((readstory) => {
+//       // res.json({ stories })
+//       const templateVars = { readstory: readstory }
+//       console.log(templateVars)
+//       res.render('readstory', templateVars)
+//     })
+//     .catch((err) => console.log("Error for getStoryByID", err));
+// });
 
-// GET /stories/mystory
-router.get('/mystory')
+router.get('/:id', (req, res) => {
+  let templateVars = {};
+  getStoryById(req.params.id)
+    .then((story) => {
+      // res.json({ myStories });
+      templateVars.story = story;
+      console.log('TEMPLATEVARS', templateVars);
+      // res.json({ stories })
+    })
+    .then(() => {
+      getStoryContributions(req.params.id)
+      .then((contributions) => {
+        templateVars.contributions = contributions;
+        console.log("Contribution templateVARs", templateVars);
+        res.render('readstory', templateVars)
+      })
+      .catch((err) => console.log("Error for getStoryContributions", err));
+    })
+
+
+    // .catch((err) => console.log("Error for getUserStoryById", err));
+
+  // getStoryContributions(req.params.id)
+  //   .then((contributions) => {
+  //     templateVars.contributions = contributions;
+  //     console.log("Contribution templateVARs", templateVars);
+  //   })
+  //   .catch((err) => console.log("Error for getStoryContributions", err));
+
+  // res.render('readstory', templateVars)
+});
 
 
 // router.get('/:id', (req, res) => {
