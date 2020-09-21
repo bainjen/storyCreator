@@ -1,6 +1,6 @@
 const express = require('express');
 const router  = express.Router();
-const { browseStory, getStoryById, addStory } = require('../db/helperquery/story-query');
+const { browseStory, getStoryById, addStory} = require('../db/helperquery/story-query');
 
 // helper functions
 // to grab all stories (GET)
@@ -33,6 +33,15 @@ router.get('/:id', (req, res) => {
     })
     .catch((err) => console.log("Error for getStoryByID", err));
 });
+
+
+// router.get('/:id', (req, res) => {
+//   getStoryContributions(req.params.id)
+//     .then((contributions) => {
+//       res.json({ contributions })
+//     })
+//     .catch((err) => console.log("Error for getStoryContributions", err));
+// });
 
 
 // curl -d "title=some title&beginning_story=this is something&img_url= &published=true&completed_at=2018-02-12T08:40:00.000Z&created_at=2018-02-12T08:40:00.000Z" -X POST http://localhost:8080/stories
