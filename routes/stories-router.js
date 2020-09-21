@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
     .then((stories) => {
       const templateVars = {stories: stories}
       // res.json({ stories })
-      res.render('storypage', templateVars)
+      res.render('homepage', templateVars)
     })
     .catch((err) => console.log("Error for browseStory", err));
 });
@@ -25,8 +25,11 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   console.log('req.params.id', req.params.id)
   getStoryById(req.params.id)
-    .then((stories) => {
-      res.json({ stories })
+    .then((readstory) => {
+      // res.json({ stories })
+      const templateVars = { readstory: readstory }
+      console.log(templateVars)
+      res.render('readstory', templateVars)
     })
     .catch((err) => console.log("Error for getStoryByID", err));
 });
