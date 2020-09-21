@@ -14,12 +14,18 @@ const morgan     = require('morgan');
 const { Pool } = require('pg');
 const dbParams = require('./lib/db.js');
 const db = new Pool(dbParams);
+const cookieSession = require('cookie-session');
 db.connect();
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 app.use(morgan('dev'));
+
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1', 'key2']
+}))
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -47,7 +53,7 @@ const loginRoutes = require("./routes/login-router");
 //++++ASK MENTOR ABOUT API REFERENCE+++++
 app.use("/stories", storyRoutes);
 app.use("/users", usersRoutes);
-// app.use("/stories-router", storiesRoutes;
+app.use("/login", loginRoutes);
 
 // app.use("/login", loginRoutes(db));
 // app.use("/api/widgets", widgetsRoutes(db));
@@ -56,7 +62,7 @@ app.use("/users", usersRoutes);
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("login");
 });
 
 app.listen(PORT, () => {

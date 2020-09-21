@@ -10,10 +10,22 @@ const { browseStory, getStoryById, addStory } = require('../db/helperquery/story
 // to update stories (POST)
 // to publish the final story (POST)
 
+// router.get('/', (req, res) => {
+//   browseStory()
+//     .then((story) => {
+//       let templateVars = {story}
+//       res.render('storypage')
+//     })
+//     .catch((err) => console.log("Error for browseStory", err));
+// });
+
 router.get('/', (req, res) => {
   browseStory()
     .then((stories) => {
-      res.json({ stories })
+      const templateVars = {stories: stories}
+      console.log("TEMPALTEVARS", templateVars)
+      // res.json({ stories })
+      res.render('storypage', templateVars)
     })
     .catch((err) => console.log("Error for browseStory", err));
 });
