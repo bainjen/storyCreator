@@ -11,6 +11,10 @@ const { browseStory, getStoryById, addStory} = require('../db/helperquery/story-
 // to publish the final story (POST)
 
 //this is GET /stories
+//this is where we go when we click on a specific story (id linked to story)
+//this shares an ejs page with /mystories --> We render the ejs file using templateVars here that filter out the user's own stories
+//in /mystories we will also render this page, however, we will change the template vars to filer for the user's own stories
+
 router.get('/', (req, res) => {
   browseStory()
     .then((stories) => {
@@ -21,7 +25,7 @@ router.get('/', (req, res) => {
     .catch((err) => console.log("Error for browseStory", err));
 });
 
-//this is where we go when we click on a specific story (id linked to story)
+
 router.get('/:id', (req, res) => {
   console.log('req.params.id', req.params.id)
   getStoryById(req.params.id)
