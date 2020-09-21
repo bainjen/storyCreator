@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Story Page</title>
+</head>
+<body>
+  <h1>World's best Author's come here</h1>
+  <section>
+    <div>
+      <% for(let story of stories) { %>
+        <h1><%= story.title %></h1>
+        <h2><%= story.beginning_story %> </h2>
+        <h3><%= story.img_url %> </h3>
+      <% } %>
+      </div>
+    </section>
+</body>
+</html>
