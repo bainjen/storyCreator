@@ -1,0 +1,18 @@
+html {
+  box-sizing: border-box;
+
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  body {
+    background-color: #EEE;
+    margin-left: 5%;
+    margin-right: 5%;
+
+    h1 {
+      color: hsl(193, 38%, 23%);
+    }
+
+  }
+}

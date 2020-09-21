@@ -1,9 +1,6 @@
-// See: https://sass-lang.com/
+// See: https://sass-lang.com/@at-root/
+@import 'default';
+@import 'header';
+@import 'story-box';
+@import 'create-form';
 
-body {
-  background-color: #EEE;
-
-  h1 {
-    color: #244751;
-  }
-}
