@@ -6,16 +6,25 @@ const { getStoryById } = require('../db/helperquery/story-query')
 // get all stories for a single users
 //get all contributions for a single user
 
-//shows a list of all author's stories
-//convert to render on homepage.ejs rather than mystory.ejs
+// router.get('/', (req, res) => {
+//   getUserStoriesByUserId(req.session.userid)
+//     .then((myStories) => {
+//       // res.json({ myStories });
+//       const templateVars = { myStories: myStories }
+//       // console.log(myStories);
+//       console.log('TEMPLATEVARS', templateVars);
+//       // res.json({ stories })
+//       res.render('homepage', templateVars)
+//     })
+//     .catch((err) => console.log("Error for getUserStoriesByUserId", err));
+// });
+
 router.get('/', (req, res) => {
   getUserStoriesByUserId(req.session.userid)
-    .then((myStories) => {
-      // res.json({ myStories });
-      const templateVars = { myStories: myStories }
-      // console.log(myStories);
-      console.log('TEMPLATEVARS', templateVars);
+    .then((stories) => {
+      const templateVars = {stories: stories, user: req.session.userid }
       // res.json({ stories })
+      console.log(templateVars)
       res.render('homepage', templateVars)
     })
     .catch((err) => console.log("Error for getUserStoriesByUserId", err));
@@ -38,7 +47,7 @@ router.get('/:id', (req, res) => {
       templateVars.contributions = contributions;
     })
     .catch((err) => console.log("Error for getStoryContributions", err));
-  res.render('author-story', templateVars)
+    res.render('author-story', templateVars)
 });
 
 module.exports = router;

@@ -16,6 +16,7 @@ const { browseStory, getStoryById, addStory, browseSelectStories} = require('../
 //this shares an ejs page with /mystories --> We render the ejs file using templateVars here that filter out the user's own stories
 //in /mystories we will also render this page, however, we will change the template vars to filer for the user's own stories
 
+// GET /stories
 router.get('/', (req, res) => {
   browseSelectStories(req.session.userid)
     .then((stories) => {
@@ -27,7 +28,7 @@ router.get('/', (req, res) => {
     .catch((err) => console.log("Error for browseStory", err));
 });
 
-
+// GET /stories/:id
 router.get('/:id', (req, res) => {
   console.log('req.params.id', req.params.id)
   getStoryById(req.params.id)
@@ -39,6 +40,9 @@ router.get('/:id', (req, res) => {
     })
     .catch((err) => console.log("Error for getStoryByID", err));
 });
+
+// GET /stories/mystory
+router.get('/mystory')
 
 
 // router.get('/:id', (req, res) => {
