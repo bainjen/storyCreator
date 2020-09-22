@@ -1,53 +1,90 @@
-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: #EBEEEF;
-  padding: 15px;
-  color: #212529;
+#login {
+  margin: 0;
+  padding: 0;
+  background: url(/images/books.jpg);
+  background-size: cover;
+  background-position: center;
+  font-family: "Indie Flower";
 
-  div.body-container {
-    margin: auto;
-    width: 50%;border: 3px solid green;
-    padding: 10px;
-    background-color: lightblue;
-    margin-top: 25vh;
+  .loginbox {
+    width: 320px;
+    height: 420px;
+    background: none;
+    color: #fff;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
   }
 
-  span.login-title {
-    font-size: 5vh;
+  .avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+  }
+
+  h1 {
+    margin: 0;
+    padding: 0 0 20px;
     text-align: center;
-    color: #ffffff;
-    font-family: "Indie Flower";
+    font-size: 22px;
   }
 
-  div.login-title {
-    display:flex;
-    background-image: url("/images/books.jpg");
-    background-size: 300px;
+  .loginbox p {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
   }
 
-  .login-btn {
-    display:flex;
-    flex-direction: column;
-    align-items: center;
+  .loginbox input {
+    width: 100%;
+    margin-bottom: 20px;
   }
 
-  .form-control {
-    padding: 0px;
+  .loginbox input[type="text"], input[type="password"] {
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 900;
   }
 
-  button {
-    justify-content: center;
-    align-items: center;
-    padding: 0 20px;
-    min-width: 160px;
-    height: 50px;
-    background-color: #57b846;
-    border-radius: 25px;
-    font-family: "Indie Flower";
+  .loginbox input[type="submit"] {
+    border: none;
+    outline: none;
+    height: 52px;
+    background: #fb2525;
+    color: #fff;
+    font-size: 30px;
+    border-radius: 20px;
+  }
+
+  .loginbox input[type="submit"]:hover {
+    cursor: pointer;
+    background: #ffc107;
+    color: #000;
+  }
+
+  .loginbox a {
+    text-decoration: none;
     font-size: 16px;
-    color: #ffffff;
-    background-color: #333333;
+    line-height: 35px;
+    color: darkgray;
+  }
+
+  .loginbox a:hover {
+    color: #ffc107;
+  }
+
+  p {
+    font-size: 30px;
   }
 }
