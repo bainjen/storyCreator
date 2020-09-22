@@ -5,5 +5,5 @@ CREATE TABLE contributions (
   story_id INTEGER REFERENCES stories(id) NOT NULL,
   name_id INTEGER REFERENCES users(id) NOT NULL,
   text_addon TEXT NOT NULL,
-  accepted_at TIMESTAMP
+  accepted_at TIMESTAMP NULL DEFAULT NULL
 );
