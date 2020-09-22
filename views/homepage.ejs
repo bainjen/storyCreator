@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,700|Montserrat:700" rel="stylesheet">
   <link rel='stylesheet' href='styles/layout.css'>
   <title>Story Page</title>
 </head>
@@ -14,7 +15,10 @@
   <%- include('partials/_header') %>
 
   <main>
-    <h1>World's best Authors come here</h1>
+    <div class='top'>
+      <h1>World's best Authors come here</h1>
+    </div>
+    </header>
     <section class='read+create'>
       <div class='browse-stories'>
         <% for(let story of stories) { %>
@@ -33,13 +37,15 @@
       <div class='form-div'>
         <h3>Create your own story:</h3>
         <form action="/" method="POST">
-          <label for="title">Title:</label>
-          <input type="text" id="title" name="title"><br><br>
-          <label for="content">Content</label>
-          <input type="text" id="content" name="content"><br><br>
-          <label for="book_img">Enter A book Image if you like?</label>
-          <input type="url" id="book_img" name="book_img"><br><br>
-          <input type="submit" value="Submit">
+          <label for="title">title:</label>
+          <textarea type="text" id="title" name="title"></textarea> <br><br>
+          <label for="content">write a few lines...</label>
+          <textarea type="text" id="content" name="content"></textarea>
+          <br><br>
+          <label for="book_img">enter an image url...</label>
+          <textarea type="url" id="book_img" name="book_img"></textarea>
+          <br><br>
+          <input class='btn' type="submit" value="Submit">
         </form>
       </div>
     </section>
