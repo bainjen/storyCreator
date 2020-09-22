@@ -1,0 +1,33 @@
+.cont-body{
+  display: flex;
+  border: solid thin black;
+  justify-content: space-around;
+
+  .single-story-box {
+    border: solid thin black;
+    width: 40%;
+    margin: 1em;
+
+    img {
+      display: inline-block;
+      max-width: 80%;
+      margin-right: 5px;
+      // content: "";
+      background-size: 100%;
+    }
+  }
+
+  .author {
+    border: solid thin black;
+    width: 40%;
+    margin: 1em;
+  }
+
+  .reader {
+    border: solid thin black;
+    width: 40%;
+    margin: 1em;
+  }
+
+}
+

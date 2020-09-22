@@ -13,41 +13,52 @@
 <body>
   <!-- we need to check to see whether it's the user who is logged in -->
   <%- include('partials/_header') %>
-    <h1><%= story.title %></h1>
-    <h2><%= story.name %></h2>
+  <container class='cont-body'>
+    <div class='single-story-box'>
+      <h1><%= story.title %></h1>
+      <h2><%= story.name %></h2>
+      <img src="<%= story.img_url %>"></img>
+      <p><%= story.beginning_story %></p>
+      <p><%= story.created_at %></p>
+    </div>
 
     <% if(user === story.name_id) { %>
 
 
-    <div>
+    <div class='author'>
       <% for (let contribution of contributions) { %>
-      <h1><%= contribution.story_id %></h1>
-      <h2><%= contribution.name_id %></h2>
+      <p>submitted by:</p>
+      <p> <%= contribution.name %></p>
       <h3><%= contribution.text_addon %></h3>
-      <h4><%= contribution.accepted_at %></h4>
+      <p><%= contribution.accepted_at %></p>
       <% } %>
     </div>
 
-      <!-- Features - ADD delete and publish -->
+    <!-- Features - ADD delete and publish -->
     <% } else { %>
 
-
-    <div>
-
+    <div class='reader'>
       <% for (let contribution of contributions) { %>
-      <h1><%= contribution.story_id %></h1>
-      <h2><%= contribution.name_id %></h2>
+      <p>submitted by:</p>
+      <p><%= contribution.name %></p>
       <h3><%= contribution.text_addon %></h3>
-      <h4><%= contribution.accepted_at %></h4>
-
+      <p><%= contribution.accepted_at %></p>
       <% } %>
+    </div>
+    <div class='new-cont'>
+      <form class='contribution' action='/stories/:id' method='POST'>
+        <label for="contribution">write your contribution here:</label>
+        <textarea type="text" id="text-addon" name="text-addon"></textarea>
+        <button class='btn' type="submit" value="submit">submit</button>
+        <br><br>
+
+      </form>
+    </div>
+
     <% } %>
 
-    </div>
     <!-- New Story Post Container  -->
-    <section id="story-feed">
-
-    </section>
+  </container>
 
 </body>
 
