@@ -33,13 +33,16 @@
       <div class='form-div'>
         <h3>Create your own story:</h3>
         <form action="/stories" method="POST">
-          <label for="title">Title:</label>
-          <input type="text" id="title" name="title"><br><br>
-          <label for="content">Content</label>
-          <input type="text" id="content" name="beginning_story"><br><br>
-          <label for="book_img">Enter A book Image if you like?</label>
-          <input type="url" id="book_img" name="img_url"><br><br>
-          <input type="submit" value="Submit">
+          <label for="title">title:</label>
+          <textarea type="text" id="title" name="title"></textarea>
+            <br><br>
+          <label for="content">start your story here...</label>
+          <textarea type="text" id="content" name="beginning_story"></textarea>
+            <br><br>
+          <label for="book_img">image url goes here:</label>
+          <textarea type="url" id="book_img" name="img_url"></textarea>
+            <br><br>
+          <button class='btn' type="submit" value="Submit">submit</button>
         </form>
       </div>
     </section>
