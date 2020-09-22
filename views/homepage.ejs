@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel='stylesheet' href='styles/layout.css'>
+  <link rel='stylesheet' href='/styles/layout.css'>
   <title>Story Page</title>
 </head>
 
@@ -32,13 +32,13 @@
       </div>
       <div class='form-div'>
         <h3>Create your own story:</h3>
-        <form action="/" method="POST">
+        <form action="/stories" method="POST">
           <label for="title">Title:</label>
           <input type="text" id="title" name="title"><br><br>
           <label for="content">Content</label>
-          <input type="text" id="content" name="content"><br><br>
+          <input type="text" id="content" name="beginning_story"><br><br>
           <label for="book_img">Enter A book Image if you like?</label>
-          <input type="url" id="book_img" name="book_img"><br><br>
+          <input type="url" id="book_img" name="img_url"><br><br>
           <input type="submit" value="Submit">
         </form>
       </div>

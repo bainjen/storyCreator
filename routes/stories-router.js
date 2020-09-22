@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const { browseStory, getStoryById, addStory, browseSelectStories } = require('../db/helperquery/story-query');
 const { getStoryContributions } = require('../db/helperquery/contribution-query');
+const { getUserStoriesByUserId } = require('../db/helperquery/users-queries');
+const { urlencoded } = require('body-parser');
 
 // helper functions
 // to grab all stories (GET)
@@ -29,9 +31,21 @@ router.get('/', (req, res) => {
     .catch((err) => console.log("Error for browseStory", err));
 });
 
+router.get('/me', (req, res) => {
+  getUserStoriesByUserId(req.session.userid)
+    .then((stories) => {
+      const templateVars = { stories: stories, user: req.session.userid }
+      // res.json({ stories })
+      // console.log(templateVars)
+      res.render('homepage', templateVars)
+    })
+    .catch((err) => console.log("Error for getUserStoriesByUserId", err));
+});
+
+
 
 router.get('/:id', (req, res) => {
-  let templateVars = {};
+  let templateVars = {user: req.session.userid};
   getStoryById(req.params.id)
     .then((story) => {
       // res.json({ myStories });
@@ -56,11 +70,13 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
   //need a way to reference who is currently logged in
   //need a cookie to save user id
-  const userId = 1;
+  console.log("req.body", req.body)
+  const user = req.body
   console.log('req.body log', req.body)
-  addStory({ ...req.body, name_id: userId })
-    .then(story => {
-      res.send({ story });
+  addStory({...req.body, name_id: req.session.userid})
+    .then(() => {
+      // req.session.userid = user
+      res.redirect('/mystories');
     })
     .catch((err) => console.log("Error for addStory", err));
 });
