@@ -40,14 +40,6 @@ const getStoryById = (id) => {
 //creates a new story in the database
 const addStory = function(story) {
 
-  // starting params are empty
-  // console.log(story);
-  // const queryParams = [];
-  // for (const key in story) {
-  //   queryParams.push(story[key])
-  //   console.log(key)
-  // }
-
   const queryString = `
   INSERT INTO stories
     (name_id, beginning_story, title, img_url, created_at, published, completed_at)

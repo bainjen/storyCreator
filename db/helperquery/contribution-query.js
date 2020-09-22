@@ -28,11 +28,13 @@ const getStoryContributions = (id) => {
   .catch((err) => console.log("Error for getStoryContributions", err));
 }
 
-const addContribution = (contribution) => {
-  const queryString = `INSERT INTO contributions (name_id, story_id, text_addon, accepted_at)
+const addContribution = (contributions) => {
+
+  const queryString = `INSERT INTO contributions ( story_id, name_id, text_addon, accepted_at)
   VALUES ($1, $2, $3, NULL)
-  RETURNING *;`
-  const values = [contributions.name_id, contributions.story_id, contributions.text_addon, contributions.accepted_at];
+  RETURNING *;`;
+
+  const values = [contributions.story_id,contributions.name_id,  contributions.text_addon];
   return db.query(queryString, values)
     .then(res => res.rows[0])
     .catch((err) => console.log("Error for addContribution", err));

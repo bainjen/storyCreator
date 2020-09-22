@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { browseStory, getStoryById, addStory, browseSelectStories } = require('../db/helperquery/story-query');
-const { getStoryContributions } = require('../db/helperquery/contribution-query');
+const { getStoryContributions, addContribution } = require('../db/helperquery/contribution-query');
 const { getUserStoriesByUserId } = require('../db/helperquery/users-queries');
 const { urlencoded } = require('body-parser');
 
@@ -45,7 +45,7 @@ router.get('/me', (req, res) => {
 
 
 router.get('/:id', (req, res) => {
-  let templateVars = {user: req.session.userid};
+  let templateVars = { user: req.session.userid };
   getStoryById(req.params.id)
     .then((story) => {
       // res.json({ myStories });
@@ -57,14 +57,29 @@ router.get('/:id', (req, res) => {
       getStoryContributions(req.params.id)
         .then((contributions) => {
           templateVars.contributions = contributions;
-          // console.log("Contribution templateVARs", templateVars);
+          console.log("Contribution templateVARs", templateVars);
           res.render('readstory', templateVars)
         })
         .catch((err) => console.log("Error for getStoryContributions", err));
     })
 });
 
-// curl -d "title=some title&beginning_story=this is something&img_url= &published=true&completed_at=2018-02-12T08:40:00.000Z&created_at=2018-02-12T08:40:00.000Z" -X POST http://localhost:8080/stories
+router.post('/:id', (req, res) => {
+console.log('REQ.PARAMS.ID', req.params.id)
+  // if (!req.body.text) {
+  //   res.status(400).json({ error: 'invalid request: no data in POST body' });
+  //   return;
+  // }
+  console.log('REQ.BODY: ', req.body)
+  console.log('REQ.PARAMS: ', req.params)
+  console.log('OUR OBJECTS', { ...req.body, name_id: req.session.userid })
+  addContribution({ story_id: req.params.id, name_id: req.session.userid, ...req.body })
+    .then((response) => {
+      // res.send(response.rows)
+      res.redirect(`/stories/${req.params.id}`)
+      //if we did this in ejs, we would do res.render
+    })
+});
 
 //need to ask how to test this fuctionality
 router.post('/', (req, res) => {
@@ -73,7 +88,7 @@ router.post('/', (req, res) => {
   console.log("req.body", req.body)
   const user = req.body
   console.log('req.body log', req.body)
-  addStory({...req.body, name_id: req.session.userid})
+  addStory({ ...req.body, name_id: req.session.userid })
     .then(() => {
       // req.session.userid = user
       res.redirect('/stories/me');

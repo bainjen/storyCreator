@@ -46,9 +46,9 @@
       <% } %>
     </div>
     <div class='new-cont'>
-      <form class='contribution' action='/stories/:id' method='POST'>
+      <form class='contribution' action='/stories/<%= story.id %>' method='POST'>
         <label for="contribution">write your contribution here:</label>
-        <textarea type="text" id="text-addon" name="text-addon"></textarea>
+        <textarea type="text" id="text-addon" name="text_addon"></textarea>
         <button class='btn' type="submit" value="submit">submit</button>
         <br><br>
 
