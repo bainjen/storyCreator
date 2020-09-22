@@ -41,23 +41,25 @@ const getStoryById = (id) => {
 const addStory = function(story) {
 
   // starting params are empty
-  const queryParams = [];
-  console.log(story)
-  for (const key in story) {
-    queryParams.push(story[key])
-  }
+  // console.log(story);
+  // const queryParams = [];
+  // for (const key in story) {
+  //   queryParams.push(story[key])
+  //   console.log(key)
+  // }
 
   const queryString = `
   INSERT INTO stories
     (name_id, beginning_story, title, img_url, created_at, published, completed_at)
-  VALUES ($1, $2, $3, $4, $5, $6, $7)
+  VALUES ($1, $2, $3, $4, NOW(), FALSE, NULL)
   RETURNING *;
   `;
 
+  const queryParams = [story.name_id, story.beginning_story, story.title, story.img_url]
   console.log(queryParams)
   return db.query(queryString, queryParams)
   .then(res => {
-    return res.rows;
+    return res.rows[0];
   })
   .catch((err) => console.log("Error for addStory", err));
 
