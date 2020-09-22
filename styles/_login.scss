@@ -1,0 +1,11 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .login-btn {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
