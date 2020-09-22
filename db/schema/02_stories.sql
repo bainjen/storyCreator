@@ -8,5 +8,5 @@ CREATE TABLE stories (
   img_url VARCHAR(255) NOT NULL,
   created_at TIMESTAMP NOT NULL DEFAULT NOW(),
   published BOOLEAN NOT NULL DEFAULT FALSE,
-  completed_at TIMESTAMP
+  completed_at TIMESTAMP NULL DEFAULT NULL
 );
