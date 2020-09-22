@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,24 +10,26 @@
   <title>Document</title>
 </head>
 
+<body>
+
   <%- include('partials/_header') %>
-  <body>
 
 
 
-    <h1>this is a single story</h1>
-    <div>
-      <h1><%= story.title %></h1>
-    </div>
-    <div>
+  <h1>this is a single story</h1>
+  <div>
+    <h1><%= story.title %></h1>
+  </div>
+  <div>
 
-      <% for (let contribution of contributions) { %>
-        <h1><%= contribution.story_id %></h1>
-        <h2><%= contribution.name_id %></h2>
-        <h3><%= contribution.text_addon %></h3>
-        <h4><%= contribution.accepted_at %></h4>
-      <% } %>
-      </div>
+    <% for (let contribution of contributions) { %>
+    <h1><%= contribution.story_id %></h1>
+    <h2><%= contribution.name_id %></h2>
+    <h3><%= contribution.text_addon %></h3>
+    <h4><%= contribution.accepted_at %></h4>
+    <% } %>
+  </div>
 
-  </body>
+</body>
+
 </html>

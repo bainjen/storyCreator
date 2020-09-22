@@ -1,3 +1,25 @@
 header {
-  background-color: green;
+  background-color: rgb(228, 88, 90);
+  width: 100%;
+  margin: none;
+
+  nav {
+    display: flex;
+    height: 150px;
+    justify-content: space-between;;
+    align-items: flex-end;
+    h1 {
+      margin: 1em;
+    }
+
+    ul {
+      margin: 1em;
+      display: flex;
+      list-style-type: none;
+
+      li {
+        margin: 5px;
+      }
+    }
+  }
 }
