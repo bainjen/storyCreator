@@ -14,9 +14,10 @@
   <!-- we need to check to see whether it's the user who is logged in -->
   <%- include('partials/_header') %>
     <h1><%= story.title %></h1>
+    <h2><%= story.name %></h2>
 
     <% if(user === story.name_id) { %>
-      <h1>this is a single story</h1>
+
 
     <div>
       <% for (let contribution of contributions) { %>
@@ -30,7 +31,7 @@
       <!-- Features - ADD delete and publish -->
     <% } else { %>
 
-      <h1>The story you want to read</h1>
+
     <div>
 
       <% for (let contribution of contributions) { %>
