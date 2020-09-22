@@ -30,7 +30,7 @@ const getStoryContributions = (id) => {
 
 const addContribution = (contribution) => {
   const queryString = `INSERT INTO contributions (name_id, story_id, text_addon, accepted_at)
-  VALUES ($1, $2, $3, $4)
+  VALUES ($1, $2, $3, NULL)
   RETURNING *;`
   const values = [contributions.name_id, contributions.story_id, contributions.text_addon, contributions.accepted_at];
   return db.query(queryString, values)
