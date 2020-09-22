@@ -37,6 +37,7 @@ const getStoryById = (id) => {
 }
 
 // we have to GET the FORM(to start the story) (GET)
+//creates a new story in the database
 const addStory = function(story) {
 
   // starting params are empty
@@ -62,11 +63,24 @@ const addStory = function(story) {
 
 }
 
+//updates existing story in the database
+const updateStory = (id) => {
+  const queryString = `UPDATE stories SET title = $1, beginning_story = $2, img_url = $3 WHERE name_id = $4
+  RETURNING *;`
+  const queryParams = [req.body.title, req.body.beginning_story, req.body.img_url, req.params.id]
+
+  return db.query(queryString, queryParams)
+    .then(() => {
+    return console.log('WHAT DO WE DO!?')
+  })
+}
+
 module.exports = {
   browseStory,
   getStoryById,
   addStory,
-  browseSelectStories
+  browseSelectStories,
+  updateStory
 }
 
 

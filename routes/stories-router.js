@@ -1,6 +1,6 @@
 const express = require('express');
-const router  = express.Router();
-const { browseStory, getStoryById, addStory, browseSelectStories} = require('../db/helperquery/story-query');
+const router = express.Router();
+const { browseStory, getStoryById, addStory, browseSelectStories } = require('../db/helperquery/story-query');
 const { getStoryContributions } = require('../db/helperquery/contribution-query');
 
 // helper functions
@@ -21,26 +21,14 @@ const { getStoryContributions } = require('../db/helperquery/contribution-query'
 router.get('/', (req, res) => {
   browseSelectStories(req.session.userid)
     .then((stories) => {
-      const templateVars = {stories: stories, user: !req.session.userid }
+      const templateVars = { stories: stories, user: !req.session.userid }
       // res.json({ stories })
-      console.log(templateVars)
+      // console.log(templateVars)
       res.render('homepage', templateVars)
     })
     .catch((err) => console.log("Error for browseStory", err));
 });
 
-// GET /stories/:id
-// router.get('/:id', (req, res) => {
-//   console.log('req.params.id', req.params.id)
-//   getStoryById(req.params.id)
-//     .then((readstory) => {
-//       // res.json({ stories })
-//       const templateVars = { readstory: readstory }
-//       console.log(templateVars)
-//       res.render('readstory', templateVars)
-//     })
-//     .catch((err) => console.log("Error for getStoryByID", err));
-// });
 
 router.get('/:id', (req, res) => {
   let templateVars = {};
@@ -48,41 +36,19 @@ router.get('/:id', (req, res) => {
     .then((story) => {
       // res.json({ myStories });
       templateVars.story = story;
-      console.log('TEMPLATEVARS', templateVars);
+      // console.log('TEMPLATEVARS', templateVars);
       // res.json({ stories })
     })
     .then(() => {
       getStoryContributions(req.params.id)
-      .then((contributions) => {
-        templateVars.contributions = contributions;
-        console.log("Contribution templateVARs", templateVars);
-        res.render('readstory', templateVars)
-      })
-      .catch((err) => console.log("Error for getStoryContributions", err));
+        .then((contributions) => {
+          templateVars.contributions = contributions;
+          // console.log("Contribution templateVARs", templateVars);
+          res.render('readstory', templateVars)
+        })
+        .catch((err) => console.log("Error for getStoryContributions", err));
     })
-
-
-    // .catch((err) => console.log("Error for getUserStoryById", err));
-
-  // getStoryContributions(req.params.id)
-  //   .then((contributions) => {
-  //     templateVars.contributions = contributions;
-  //     console.log("Contribution templateVARs", templateVars);
-  //   })
-  //   .catch((err) => console.log("Error for getStoryContributions", err));
-
-  // res.render('readstory', templateVars)
 });
-
-
-// router.get('/:id', (req, res) => {
-//   getStoryContributions(req.params.id)
-//     .then((contributions) => {
-//       res.json({ contributions })
-//     })
-//     .catch((err) => console.log("Error for getStoryContributions", err));
-// });
-
 
 // curl -d "title=some title&beginning_story=this is something&img_url= &published=true&completed_at=2018-02-12T08:40:00.000Z&created_at=2018-02-12T08:40:00.000Z" -X POST http://localhost:8080/stories
 
@@ -91,15 +57,15 @@ router.post('/', (req, res) => {
   //need a way to reference who is currently logged in
   //need a cookie to save user id
   const userId = 1;
-  console.log('re.body log', req.body)
+  console.log('req.body log', req.body)
   addStory({ ...req.body, name_id: userId })
     .then(story => {
-      res.send( { story });
+      res.send({ story });
     })
     .catch((err) => console.log("Error for addStory", err));
 });
 
-  // return router;
+// return router;
 
 
 module.exports = router;

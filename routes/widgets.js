@@ -25,3 +25,21 @@ module.exports = (db) => {
   });
   return router;
 };
+
+
+// <% if(req.session.id) { %>
+
+//   <h1>this is a single story</h1>
+//   <div>
+//     <h1><%= story.title %></h1>
+//   </div>
+//   <div>
+
+//     <% for (let contribution of contributions) { %>
+//     <h1><%= contribution.story_id %></h1>
+//     <h2><%= contribution.name_id %></h2>
+//     <h3><%= contribution.text_addon %></h3>
+//     <h4><%= contribution.accepted_at %></h4>
+//     <% } %>
+
+//     <% } else { %>

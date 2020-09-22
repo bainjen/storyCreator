@@ -2,7 +2,7 @@
 .browse-stories {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  // justify-content: space-between;
 
   .story-box {
     display: flex;
@@ -10,7 +10,7 @@
     align-items: center;
     border: black thin solid;
     margin: 1em;
-    width: 25%;
+    width: 40%;
   }
     .img-box {
       margin: 1em;
@@ -21,6 +21,15 @@
         max-height: 100%;
         object-fit: cover;
       }
+
+      // img {
+      //   display: inline-block;
+      //   max-width: 100%;
+      //   min-width: 100%;
+      //   margin-right: 5px;
+      //   content: "";
+      //   background-size: 100%;
+      // }
 
     .story-info {
       display: flex;

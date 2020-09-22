@@ -3,42 +3,26 @@ const router = express.Router();
 const { getUserStoriesByUserId } = require('../db/helperquery/users-queries');
 const { getStoryContributions } = require('../db/helperquery/contribution-query');
 const { getStoryById } = require('../db/helperquery/story-query')
+
 // get all stories for a single users
 //get all contributions for a single user
-
-// router.get('/', (req, res) => {
-//   getUserStoriesByUserId(req.session.userid)
-//     .then((myStories) => {
-//       // res.json({ myStories });
-//       const templateVars = { myStories: myStories }
-//       // console.log(myStories);
-//       console.log('TEMPLATEVARS', templateVars);
-//       // res.json({ stories })
-//       res.render('homepage', templateVars)
-//     })
-//     .catch((err) => console.log("Error for getUserStoriesByUserId", err));
-// });
-
 router.get('/', (req, res) => {
   getUserStoriesByUserId(req.session.userid)
     .then((stories) => {
-      const templateVars = {stories: stories, user: req.session.userid }
+      const templateVars = { stories: stories, user: req.session.userid }
       // res.json({ stories })
-      console.log(templateVars)
+      // console.log(templateVars)
       res.render('homepage', templateVars)
     })
     .catch((err) => console.log("Error for getUserStoriesByUserId", err));
 });
 
 router.get('/:id', (req, res) => {
-  let templateVars = {};
+  const userid = req.session.userid
+  let templateVars = {userid: userid};
   getStoryById(req.params.id)
     .then((story) => {
-      // res.json({ myStories });
       templateVars.story = story;
-      // console.log(myStories);
-      console.log('TEMPLATEVARS', templateVars);
-      // res.json({ stories })
     })
     .catch((err) => console.log("Error for getUserStoryById", err));
 
@@ -47,7 +31,11 @@ router.get('/:id', (req, res) => {
       templateVars.contributions = contributions;
     })
     .catch((err) => console.log("Error for getStoryContributions", err));
-    res.render('author-story', templateVars)
+  res.render('readstory', templateVars)
 });
+
+router.post('/:id', (req, res) => {
+
+})
 
 module.exports = router;
