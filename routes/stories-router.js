@@ -76,7 +76,7 @@ router.post('/', (req, res) => {
   addStory({...req.body, name_id: req.session.userid})
     .then(() => {
       // req.session.userid = user
-      res.redirect('/mystories');
+      res.redirect('/stories/me');
     })
     .catch((err) => console.log("Error for addStory", err));
 });
