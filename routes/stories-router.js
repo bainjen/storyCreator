@@ -42,8 +42,6 @@ router.get('/me', (req, res) => {
     .catch((err) => console.log("Error for getUserStoriesByUserId", err));
 });
 
-
-
 router.get('/:id', (req, res) => {
   let templateVars = { user: req.session.userid };
   getStoryById(req.params.id)
@@ -96,13 +94,7 @@ router.post('/', (req, res) => {
     .catch((err) => console.log("Error for addStory", err));
 });
 
-// return router;
-
-
 module.exports = router;
-
-
-
 
 //+++++++STORIES ROUTES+++++++
 
