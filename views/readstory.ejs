@@ -5,12 +5,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+
+  <script type="text/javascript" src="/scripts/app.js"></script>
   <link rel='stylesheet' href='/styles/layout.css'>
 
   <title>Document</title>
 </head>
 
 <body>
+    
   <!-- we need to check to see whether it's the user who is logged in -->
   <%- include('partials/_header') %>
   <container class='cont-body'>
@@ -69,8 +74,8 @@
                       </div>
                       <h3><%= contribution.text_addon %></h3>
                       <p><%= contribution.accepted_at %></p>
-                      <div id='count'><%=contribution.count%></div>
-                      <button class='btn' id='like' type="" value="submit"> ✍️ </button>
+                      <div id="count" data-id=<%=story.id%>><%=contribution.count%></div>
+                      <button class="btn" id="like" type="button"> ✍️ </button>
                     </div>
                 <% } %>
               <% } %>

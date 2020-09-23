@@ -44,6 +44,7 @@ app.use(express.static("public"));
 const storyRoutes = require("./routes/stories-router")
 const usersRoutes = require("./routes/users-router");
 const loginRoutes = require("./routes/login-router");
+const contributionRoutes = require("./routes/contributions-router");
 // const myStoriesRoutes = require("./routes/mystories-router");
 // const storiesRoutes = require("./routes/stories-router");
 // const widgetsRoutes = require("./routes/widgets");
@@ -55,6 +56,7 @@ const loginRoutes = require("./routes/login-router");
 app.use("/stories", storyRoutes);
 app.use("/users", usersRoutes);
 app.use("/login", loginRoutes);
+app.use("/contributions", contributionRoutes);
 // app.use("/mystories", myStoriesRoutes);
 // app.use("/login", loginRoutes(db));
 // app.use("/api/widgets", widgetsRoutes(db));
