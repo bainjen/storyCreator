@@ -52,5 +52,25 @@ const incompleteStory = (id) => {
     .catch(err => console.log("Error for incompleteStory", err));
 }
 
+const addUpVote = (contributionId, name_id) => {
+  const queryString = `INSERT INTO upVotes (contribution_id, name_id)
+  VALUES ($1, $2)
+  RETURNING *;`
+  return db.query(queryString, [contributionId, name_id])
+    // .then(res => {
+    //   return res.rows[0];
+    // })
+    // .catch(err => {
+    //   console.log('error for addupvote', err)
+    //   throw 'SOMETHING WRONG HERE SHIT hAPPENED';
+    // })
+}
 
-module.exports = { getStoryContributions, addContribution, getCompletedStory, incompleteStory };
+const getUpVotes = (contributionId) => {
+  const queryString = `SELECT COUNT(*) FROM upVotes
+  WHERE contribution_id = $1;`
+  return db.query(queryString, [contributionId])
+}
+
+
+module.exports = { getUpVotes, getStoryContributions, addContribution, getCompletedStory, incompleteStory, addUpVote };
