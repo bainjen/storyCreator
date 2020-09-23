@@ -14,7 +14,7 @@ const browseStory = () => {
 
 //grab stories that don't belon to logged in user
 const browseSelectStories = (id) => {
-  return db.query("SELECT * FROM stories WHERE NOT id = $1;", [id])
+  return db.query("SELECT * FROM stories WHERE NOT name_id = $1;", [id])
     .then((response) => {
       return response.rows;
     })
