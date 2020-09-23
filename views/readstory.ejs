@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    
+
   <!-- we need to check to see whether it's the user who is logged in -->
   <%- include('partials/_header') %>
   <container class='cont-body'>
@@ -33,7 +33,9 @@
           <h1><%= story.title %></h1>
           <h2><%= story.name %></h2>
           <img src="<%= story.img_url %>"></img>
-          <p><%= story.beginning_story %></p>
+          <div class="append">
+            <p><%= story.beginning_story %></p>
+          </div>
           <p><%= story.created_at %></p>
           <h3>IN PROGRESS</h3>
         </div>
@@ -48,7 +50,13 @@
             <h3><%= contribution.text_addon %></h3>
             <p><%= contribution.accepted_at %></p>
             <% } %>
+            <form class="add-delete" action='/stories/<%= story.id %>' method='POST'>
+              <button class="add" type="submit">Add This Contribution</button>
+              <button class="delete" type="sumbit">Delete This Contribution</button>
+            </form>
             <p>THIS IS THE SECRET SIGNAL💕</p>
+          </div>
+
           </div>
 
           <!-- Features - ADD delete and publish -->

@@ -34,14 +34,14 @@ const addContribution = (contributions) => {
     .catch((err) => console.log("Error for addContribution", err));
 }
 
-const getCompletedStory = (id) => {
-  const queryString = `SELECT published FROM stories WHERE published = TRUE;`
-  return db.query(queryString, [id])
-    .then(res => {
-      return res.rows;
-    })
-    .catch(err => console.log("Error for getCompletedStory", err));
-}
+// const getCompletedStory = (id) => {
+//   const queryString = `SELECT published FROM stories WHERE published = TRUE;`
+//   return db.query(queryString, [id])
+//     .then(res => {
+//       return res.rows;
+//     })
+//     .catch(err => console.log("Error for getCompletedStory", err));
+// }
 
 const incompleteStory = (id) => {
   const queryString = `SELECT stories.title, stories.beginning_story FROM stories WHERE published = FALSE;`
@@ -70,6 +70,23 @@ const getUpVotes = (contributionId) => {
   const queryString = `SELECT COUNT(*) FROM upVotes
   WHERE contribution_id = $1;`
   return db.query(queryString, [contributionId])
+}
+
+const getCompletedStory = () => {
+  const queryString = `SELECT stories.title as titles,
+  stories.beginning_story as storytext,
+  contributions.text_addon as contributiontext
+  FROM contributions
+  JOIN stories on stories.id = story_id
+  WHERE stories.published = true
+  ORDER BY contribution.id;`
+
+  return db.query(queryString)
+}
+
+const deleteContribution = (id) => {
+  const queryString = `DELETE FROM contributions WHERE id =$1;`
+    return db.query(queryString, [id])
 }
 
 
