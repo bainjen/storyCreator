@@ -1,7 +1,9 @@
 .cont-body{
   display: flex;
   border: solid thin black;
-  justify-content: space-around;
+  // justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
 
   .single-story-box {
     border: solid thin black;
@@ -27,6 +29,11 @@
     border: solid thin black;
     width: 40%;
     margin: 1em;
+
+    .reader-1 {
+      border: solid thin black;
+      margin: 1em;
+    }
   }
 
 }

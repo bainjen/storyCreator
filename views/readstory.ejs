@@ -36,15 +36,6 @@
 
     <!-- Features - ADD delete and publish -->
     <% } else { %>
-
-    <div class='reader'>
-      <% for (let contribution of contributions) { %>
-      <p>submitted by:</p>
-      <p><%= contribution.name %></p>
-      <h3><%= contribution.text_addon %></h3>
-      <p><%= contribution.accepted_at %></p>
-      <% } %>
-    </div>
     <div class='new-cont'>
       <form class='contribution' action='/stories/<%= story.id %>' method='POST'>
         <label for="contribution">write your contribution here:</label>
@@ -53,6 +44,20 @@
         <br><br>
 
       </form>
+    </div>
+
+    <div class='reader'>
+      <% for (let contribution of contributions) { %>
+      <div class='reader-1'>
+        <p>submitted by:</p>
+        <p><%= contribution.name %></p>
+        <h3><%= contribution.text_addon %></h3>
+        <p><%= contribution.accepted_at %></p>
+        <p><%= contribution.count %></p>
+        <div class='count'><%=contributions.count%></div>
+        <button class='btn' id='like' type="" value="submit">submit</button>
+      </div>
+      <% } %>
     </div>
 
     <% } %>

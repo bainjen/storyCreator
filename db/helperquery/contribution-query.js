@@ -15,11 +15,14 @@ db.connect();
 
 const getStoryContributions = (id) => {
   const queryString = `SELECT stories.id, stories.title, stories.beginning_story,
-  contributions.text_addon, users.name
+  contributions.text_addon, contributions.accepted_at, users.name, COUNT(upVotes.contribution_id)
   FROM contributions
   JOIN users ON users.id = name_id
   RIGHT JOIN stories on stories.id = story_id
-  WHERE stories.id = $1;`
+  FULL OUTER JOIN upVotes ON contributions.id = contribution_id
+  WHERE stories.id = $1
+  GROUP BY upVotes.contribution_id, stories.id, stories.title, stories.beginning_story,
+  contributions.text_addon, contributions.accepted_at, users.name;`
 
   return db.query(queryString, [id])
   .then((response) => {
@@ -53,7 +56,7 @@ const getCompletedStory = (id) => {
 
 const incompleteStory = (id) => {
   const queryString = `SELECT stories.title, stories.beginning_story FROM stories WHERE published = FALSE;`
-  return db.query(queryStCanvasRenderingContext2D, [id])
+  return db.query(queryString, [id])
     .then(res => {
       return res.rows;
     })
@@ -61,4 +64,4 @@ const incompleteStory = (id) => {
 }
 
 
-module.exports = { getStoryContributions, addContribution, getCompletedStory, incompleteStory };
+module.exports = { getStoryContributions, addContribution, getCompletedStory, incompleteStory, countLikes };
