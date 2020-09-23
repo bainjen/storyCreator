@@ -27,8 +27,10 @@
 
     <div class='author'>
       <% for (let contribution of contributions) { %>
-      <p>submitted by:</p>
-      <p> <%= contribution.name %></p>
+      <div class='submitted-by'>
+        <p>submitted by:</p>
+        <p><%= contribution.name %></p>
+      </div>
       <h3><%= contribution.text_addon %></h3>
       <p><%= contribution.accepted_at %></p>
       <% } %>
@@ -45,25 +47,27 @@
         <br><br>
 
       </form>
-    </div>
 
-    <div class='reader'>
-      <% for (let contribution of contributions) { %>
-      <div class='reader-1'>
-        <p>submitted by:</p>
-        <p><%= contribution.name %></p>
-        <h3><%= contribution.text_addon %></h3>
-        <p><%= contribution.accepted_at %></p>
-        <div id='count'><%=contribution.count%></div>
-        <button class='btn' id='like' type="" value="submit"> ✍️ </button>
+
+      <div class='reader'>
+        <% for (let contribution of contributions) { %>
+        <div class='reader-1'>
+          <div class='submitted-by'>
+            <p>submitted by:</p>
+            <p><%= contribution.name %></p>
+          </div>
+          <h3><%= contribution.text_addon %></h3>
+          <p><%= contribution.accepted_at %></p>
+          <div id='count'><%=contribution.count%></div>
+          <button class='btn' id='like' type="" value="submit"> ✍️ </button>
+        </div>
+        <% } %>
       </div>
+
       <% } %>
-    </div>
 
-    <% } %>
-
-    <!-- New Story Post Container  -->
-    <section id="new-contribution"></section>
+      <!-- New Story Post Container  -->
+      <section id="new-contribution"></section>
   </container>
 
 </body>
