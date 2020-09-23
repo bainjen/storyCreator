@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { browseStory, getStoryById, addStory, browseSelectStories } = require('../db/helperquery/story-query');
-const { getStoryContributions, addContribution } = require('../db/helperquery/contribution-query');
+const { getStoryContributions, addContribution, addUpVote } = require('../db/helperquery/contribution-query');
 const { getUserStoriesByUserId } = require('../db/helperquery/users-queries');
 const { urlencoded } = require('body-parser');
 
@@ -93,6 +93,11 @@ router.post('/', (req, res) => {
     })
     .catch((err) => console.log("Error for addStory", err));
 });
+
+// router.post('/:id/upVotes', (req, res) => {
+//   addUpVote(req.params.id)
+//   res.send('All good')
+// })
 
 module.exports = router;
 
