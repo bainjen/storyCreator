@@ -64,4 +64,4 @@ const incompleteStory = (id) => {
 }
 
 
-module.exports = { getStoryContributions, addContribution, getCompletedStory, incompleteStory, countLikes };
+module.exports = { getStoryContributions, addContribution, getCompletedStory, incompleteStory };
