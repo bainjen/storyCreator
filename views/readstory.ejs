@@ -54,7 +54,7 @@
         <p><%= contribution.name %></p>
         <h3><%= contribution.text_addon %></h3>
         <p><%= contribution.accepted_at %></p>
-        <div class='count'><%=contribution.count%></div>
+        <div id='count'><%=contribution.count%></div>
         <button class='btn' id='like' type="" value="submit"> ✍️ </button>
       </div>
       <% } %>
@@ -63,6 +63,7 @@
     <% } %>
 
     <!-- New Story Post Container  -->
+    <section id="new-contribution"></section>
   </container>
 
 </body>
