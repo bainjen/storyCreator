@@ -1,8 +1,25 @@
 $(document).ready(function () {
 
-  // $("#like").on("click", "#count", function(e) {
-  //         var id = $(this).attr("id");
-  //         var main = $(this);
+  loadContributions();
+
+  const loadContributions = () => {
+    $.ajax({
+      url: `/stories/${id}`, //????
+      method: "GET",
+      dataType: 'json',
+      success: (contributions) => {
+        renderContributions(contributions);
+      },
+      error: (error) => {
+        console.log('error from loadContributions', error);
+      }
+    });
+  };
+
+
+// $("#like").on("click", "#count", function(e) {
+//         var id = $(this).attr("id");
+//         var main = $(this);
 
   //         if(button.hasId("like"))
   //           return;
@@ -31,32 +48,23 @@ $(document).ready(function () {
   //build up div that contains the new contribution
   const createContributionElem = (contributionObj) => {
     const $contributionObj = $(`
-    <div class='reader'>
-      <% for (let contribution of contributions) { %>
-      <div class='reader-1'>
+      <div class='reader'>
+        <div class='reader-1'>
         <div class='submitted-by'>
-          <p>submitted by:</p>
-          <p><%= contribution.name %></p>
-        </div>
-        <h3><%= contribution.text_addon %></h3>
-        <p><%= contribution.accepted_at %></p>
-        <div class='count'><%=contribution.count%></div>
+       <p>submitted by:</p>
+       <p>${contribution.name}</p>
+     </div>
+        <h3>${escape(contribution.text_addon)} </h3>
+        <p>${contribution.accepted_at} </p>
+        <div class='count'>${contribution.count}</div>
         <button class='btn' id='like' type="" value="submit"> ✍️ </button>
       </div>
-      <% } %>
     </div>
-    <% } %>
     `)
   };
 
-  $("#like").click(function () {
-    let count = parseInt($("~#count", this).text());
-    console.log("WHAT IS THIS COUNT", count)
-    console.log("WHAT IS THIS", this);
-    if ($(this).hasId("like")) {
-      count++;
-    }
-  })
+
+
 
   //loops through all contributions
   const renderContributions = (contributions) {
@@ -68,23 +76,17 @@ $(document).ready(function () {
     }
   };
 
-  const loadContributions = () => {
-    $.ajax({
-      url: `/stories/${id}`, //????
-      method: "GET",
-      dataType: 'json',
-      success: (contributions) => {
-        renderContributions(contributions);
-      },
-      error: (error) => {
-        console.log('error from loadContributions', error);
-      }
-    });
-  };
 
 
-  // $(document).ready(function () {
-  //   loadContributions();
+  $('#like').on('click', function() {
+    console.log(contribution.counter);
+    let addnum = contribution.counter;
+    addnum++;
+    alert("not working")
+  })
+
+// $(document).ready(function () {
+//   loadContributions();
 
   //   // //form submit handler
   //   // const $submitTweet = $('#submit-tweet');
