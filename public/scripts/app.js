@@ -20,16 +20,14 @@ $(document).ready(function () {
 
   // loadContributions(id);
 
-  const addupVote = (id) => {
-
+  const addupVote = function(id) {
+    console.log("WHAT ARE YOU MY GOOD FRIEND", $(this))
     $.ajax({
       url: `/contributions/${id}/upVotes`,
       method:'POST',
       dataType:'json',
       success: ({count}) => {
-        console.log("WHAT ARE YOU")
-        console.log(this)
-        console.log("WHATS MY COUNT", count)
+        $(this).siblings('#count').text(count);
       },
       error:  (error) => {
         console.log('error from votes', error);
@@ -44,7 +42,7 @@ $(document).ready(function () {
     console.log("CLICK!!!!!!!!");
     let storyid =$("#count").attr("data-id")
     console.log("WHAT IS STORYID", storyid)
-    addupVote(storyid);
+    addupVote.call(this, storyid);
   });
 
   const escape = function (str) {
