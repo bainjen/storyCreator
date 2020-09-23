@@ -1,8 +1,8 @@
 $(document).ready(function () {
 
-  loadContributions();
 
-  const loadContributions = () => {
+
+  const loadContributions = (id) => {
     $.ajax({
       url: `/stories/${id}`, //????
       method: "GET",
@@ -15,29 +15,37 @@ $(document).ready(function () {
       }
     });
   };
+  console.log("THiS IS WHERE WE ARE")
+  console.log($('#like'));
+
+  // loadContributions(id);
+
+  const addupVote = (id) => {
+
+    $.ajax({
+      url: `/contributions/${id}/upVotes`,
+      method:'POST',
+      dataType:'json',
+      success: ({count}) => {
+        console.log("WHAT ARE YOU")
+        console.log(this)
+        console.log("WHATS MY COUNT", count)
+      },
+      error:  (error) => {
+        console.log('error from votes', error);
+      }
+    });
+  };
 
 
-// $("#like").on("click", "#count", function(e) {
-//         var id = $(this).attr("id");
-//         var main = $(this);
 
-  //         if(button.hasId("like"))
-  //           return;
-
-  //         main.addId("like");
-
-  //         $.ajax({
-  //             type: 'post',
-  //             url: 'includes/upvote.php',
-  //             data: { "id":id },
-  //             success(data) {
-  //             main.parent().find("div.votenum").html(data);
-  //             },
-  //             error: function (xhr, textStatus, error) {
-  //                 alert("Sorry!");
-  //             }
-  //         });
-  //     });
+  $(".btn").on("click", function(e) {
+    console.log("THIS EEEEEEE", e.target.id)
+    console.log("CLICK!!!!!!!!");
+    let storyid =$("#count").attr("data-id")
+    console.log("WHAT IS STORYID", storyid)
+    addupVote(storyid);
+  });
 
   const escape = function (str) {
     let div = document.createElement('div');
@@ -67,7 +75,7 @@ $(document).ready(function () {
 
 
   //loops through all contributions
-  const renderContributions = (contributions) {
+  const renderContributions = (contributions) => {
     $('#new-contribution').empty();
     for (const contribution of contributionObj) {
       const $contribution = createContributionElem(contribution);
@@ -75,15 +83,6 @@ $(document).ready(function () {
       $('#new-contribution').prepend($contribution);
     }
   };
-
-
-
-  $('#like').on('click', function() {
-    console.log(contribution.counter);
-    let addnum = contribution.counter;
-    addnum++;
-    alert("not working")
-  })
 
 // $(document).ready(function () {
 //   loadContributions();
