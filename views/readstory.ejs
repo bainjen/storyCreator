@@ -15,57 +15,69 @@
   <%- include('partials/_header') %>
   <container class='cont-body'>
     <div class='single-story-box'>
-      <h1><%= story.title %></h1>
-      <h2><%= story.name %></h2>
-      <img src="<%= story.img_url %>"></img>
-      <p><%= story.beginning_story %></p>
-      <p><%= story.created_at %></p>
-    </div>
-
-    <% if(user == story.name_id) { %>
-
-
-    <div class='author'>
-      <% for (let contribution of contributions) { %>
-      <div class='submitted-by'>
-        <p>submitted by:</p>
-        <p><%= contribution.name %></p>
+      <% if(story.published === true) {%>
+        <h1><%= story.title %></h1>
+        <h2><%= story.name %></h2>
+        <img src="<%= story.img_url %>"></img>
+        <p><%= story.beginning_story %></p>
+        <p><%= story.created_at %></p>
+        <h3>COMPLETED</h3>
       </div>
-      <h3><%= contribution.text_addon %></h3>
-      <p><%= contribution.accepted_at %></p>
-      <% } %>
-      <p>THIS IS THE SECRET SIGNAL💕</p>
-    </div>
-
-    <!-- Features - ADD delete and publish -->
-    <% } else { %>
-    <div class='new-cont'>
-      <form class='contribution' action='/stories/<%= story.id %>' method='POST'>
-        <label for="contribution">write your contribution here:</label>
-        <textarea type="text" id="text-addon" name="text_addon"></textarea>
-        <button class='btn' type="submit" value="submit">submit</button>
-        <br><br>
-
-      </form>
-
-
-      <div class='reader'>
-        <% for (let contribution of contributions) { %>
-        <div class='reader-1'>
-          <div class='submitted-by'>
-            <p>submitted by:</p>
-            <p><%= contribution.name %></p>
-          </div>
-          <h3><%= contribution.text_addon %></h3>
-          <p><%= contribution.accepted_at %></p>
-          <div id='count'><%=contribution.count%></div>
-          <button class='btn' id='like' type="" value="submit"> ✍️ </button>
+      <% } else { %>
+        <div class='single-story-box'>
+          <h1><%= story.title %></h1>
+          <h2><%= story.name %></h2>
+          <img src="<%= story.img_url %>"></img>
+          <p><%= story.beginning_story %></p>
+          <p><%= story.created_at %></p>
+          <h3>IN PROGRESS</h3>
         </div>
+
+         <% if(user == story.name_id) { %>
+            <div class='author'>
+            <% for (let contribution of contributions) { %>
+            <div class='submitted-by'>
+              <p>submitted by:</p>
+              <p><%= contribution.name %></p>
+            </div>
+            <h3><%= contribution.text_addon %></h3>
+            <p><%= contribution.accepted_at %></p>
+            <% } %>
+            <p>THIS IS THE SECRET SIGNAL💕</p>
+          </div>
+
+          <!-- Features - ADD delete and publish -->
+          <% } else { %>
+
+          <div class='new-cont'>
+            <form class='contribution' action='/stories/<%= story.id %>' method='POST'>
+              <label for="contribution">write your contribution here:</label>
+              <textarea type="text" id="text-addon" name="text_addon"></textarea>
+              <button class='btn' type="submit" value="submit">submit</button>
+              <br><br>
+            </form>
+
+            <div class='reader'>
+              <% for (let contribution of contributions) { %>
+                <% if(!contribution) { %>
+                  <p>NO CONTRIBUTIONS HERE TO SHOW</p>
+                  <% } else { %>
+                    <div class='reader-1'>
+                      <div class='submitted-by'>
+                        <p>submitted by:</p>
+                        <p><%= contribution.name %></p>
+                      </div>
+                      <h3><%= contribution.text_addon %></h3>
+                      <p><%= contribution.accepted_at %></p>
+                      <div id='count'><%=contribution.count%></div>
+                      <button class='btn' id='like' type="" value="submit"> ✍️ </button>
+                    </div>
+                <% } %>
+              <% } %>
+            </div>
+
+            <% } %>
         <% } %>
-      </div>
-
-      <% } %>
-
       <!-- New Story Post Container  -->
       <section id="new-contribution"></section>
   </container>

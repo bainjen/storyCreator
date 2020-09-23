@@ -23,7 +23,7 @@ const { urlencoded } = require('body-parser');
 router.get('/', (req, res) => {
   browseSelectStories(req.session.userid)
     .then((stories) => {
-      const templateVars = { stories: stories, user: !req.session.userid }
+      const templateVars = { stories: stories, user: req.session.userid }
       // res.json({ stories })
       // console.log(templateVars)
       res.render('homepage', templateVars)

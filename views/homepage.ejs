@@ -25,7 +25,15 @@
           <div class='story-info'>
             <h1><%= story.title %></h1>
             <p><%= story.beginning_story %> </p>
-            <!-- <p><Read More</a></p> -->
+          <div>
+            <p>THIS IS WHERE IN PROGRESS?PUBLISHED</p>
+            <% if(story.published === false) {%>
+              <h3>IN PROGRESS</h3>
+            <% } else { %>
+              <h3>COMPLETED</h3>
+            <% } %>
+          </div>
+
           </div>
         </div>
         <% } %>

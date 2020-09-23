@@ -70,7 +70,7 @@ $(document).ready(function () {
   const renderContributions = (contributions) {
     $('#new-contribution').empty();
     for (const contribution of contributionObj) {
-      const $contribution = createTweetElement(contribution);
+      const $contribution = createContributionElem(contribution);
 
       $('#new-contribution').prepend($contribution);
     }
