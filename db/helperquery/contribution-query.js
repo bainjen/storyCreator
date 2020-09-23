@@ -1,12 +1,3 @@
-// get all contributions by story id (GET)
-// get contribution form (GET)
-// and add a contribution to a story (POST)
-//
-
-//make a query that pulls out all contirbutions by story id
-//join users to get username
-//from stories
-
 const { response } = require('express');
 const { Pool } = require('pg');
 const dbParams = require('../../lib/db.js');
@@ -25,10 +16,10 @@ const getStoryContributions = (id) => {
   contributions.text_addon, contributions.accepted_at, users.name;`
 
   return db.query(queryString, [id])
-  .then((response) => {
-    return response.rows;
-  })
-  .catch((err) => console.log("Error for getStoryContributions", err));
+    .then((response) => {
+      return response.rows;
+    })
+    .catch((err) => console.log("Error for getStoryContributions", err));
 }
 
 const addContribution = (contributions) => {
@@ -37,13 +28,11 @@ const addContribution = (contributions) => {
   VALUES ($1, $2, $3, NOW())
   RETURNING *;`;
 
-  const values = [contributions.story_id,contributions.name_id,  contributions.text_addon];
+  const values = [contributions.story_id, contributions.name_id, contributions.text_addon];
   return db.query(queryString, values)
     .then(res => res.rows[0])
     .catch((err) => console.log("Error for addContribution", err));
 }
-// INSERT INTO contributions (name_id, story_id, text_addon, accepted_at)
-// VALUES (1, 2, "hello word", "20:02:00")
 
 const getCompletedStory = (id) => {
   const queryString = `SELECT published FROM stories WHERE published = TRUE;`

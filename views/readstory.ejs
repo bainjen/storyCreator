@@ -22,7 +22,7 @@
       <p><%= story.created_at %></p>
     </div>
 
-    <% if(user === story.name_id) { %>
+    <% if(user == story.name_id) { %>
 
 
     <div class='author'>
@@ -32,6 +32,7 @@
       <h3><%= contribution.text_addon %></h3>
       <p><%= contribution.accepted_at %></p>
       <% } %>
+      <p>THIS IS THE SECRET SIGNAL💕</p>
     </div>
 
     <!-- Features - ADD delete and publish -->
@@ -54,7 +55,7 @@
         <h3><%= contribution.text_addon %></h3>
         <p><%= contribution.accepted_at %></p>
         <div class='count'><%=contribution.count%></div>
-        <button class='btn' id='like' type="" value="submit">like</button>
+        <button class='btn' id='like' type="" value="submit"> ✍️ </button>
       </div>
       <% } %>
     </div>
