@@ -98,11 +98,13 @@ router.put('/:id', (req, res) => {
 // option 2: do you like 89 to 94
 // option 1: just return a response saying okay // follow in app.js the process in upVote function
   console.log('req.body log', req.body)
-  getCompletedStory()
-    .then(({rows}) => {
-      console.log("COUNT ROWS!!", rows[0])
-      res.json({...rows[0]})
-    })
+  //need to update the story, then grab the updated story
+  getStoryById
+  // getCompletedStory()
+  //   .then(({rows}) => {
+  //     console.log("COUNT ROWS!!", rows[0])
+  //     res.json({...rows[0]})
+  //   })
     .catch(err => console.log("Error with getCompletedStory", err))
 })
 

@@ -1,10 +1,5 @@
 $(document).ready(function () {
 
-  const loadEverthing = function() {
-    $.getJSON(`/stories`)
-  }
-
-
   //build up div that contains the new contribution
   const createContributionElem = (contributionObj) => {
     const $contributionObj = $(`
@@ -86,7 +81,27 @@ $(document).ready(function () {
     return div.innerHTML;
   }
 
+  const addContribution = function (addStory) {
+    let storyid = $(this).attr("story-id")
+    $.ajax({
+      url: `/stories/${storyid}`,
+      method:'PUT',
+      dataType: 'json',
+      data: addStory,
+      error:  (error) => {
+        console.log('error from addContribution', error);
+      }
+    });
+  }
 
+
+  $(".add-btn").on("click", function (e) {
+    // let addContributionId = $(this).attr("add-contribution-id")
+    // console.log('WHAT IS ADD-CONTRIBUTION-ID', addContributionId);
+    addContribution({ add: true });
+  })
+
+  /// if contributions.accepted_at === true then contribution_text.appendTo(body of the story)
 
 // $(document).ready(function () {
 //   loadContributions();
