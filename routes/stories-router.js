@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const { browseStory, getStoryById, addStory, browseSelectStories, updateStory } = require('../db/helperquery/story-query');
-const { getStoryContributions, addContribution, addUpVote } = require('../db/helperquery/contribution-query');
+const { browseStory, getStoryById, addStory, browseSelectStories, updateStory} = require('../db/helperquery/story-query');
+const { getStoryContributions, addContribution, addUpVote, getCompletedStory } = require('../db/helperquery/contribution-query');
 const { getUserStoriesByUserId } = require('../db/helperquery/users-queries');
 const { urlencoded } = require('body-parser');
 
@@ -83,9 +83,8 @@ console.log('REQ.PARAMS.ID', req.params.id)
 router.post('/', (req, res) => {
   //need a way to reference who is currently logged in
   //need a cookie to save user id
-  console.log("req.body", req.body)
   const user = req.body
-  console.log('req.body log', req.body)
+  // console.log('req.body log', req.body)
   addStory({ ...req.body, name_id: req.session.userid })
     .then(() => {
       // req.session.userid = user
@@ -98,6 +97,13 @@ router.post('/', (req, res) => {
 router.put('/:id', (req, res) => {
 // option 2: do you like 89 to 94
 // option 1: just return a response saying okay // follow in app.js the process in upVote function
+  console.log('req.body log', req.body)
+  getCompletedStory()
+    .then(({rows}) => {
+      console.log("COUNT ROWS!!", rows[0])
+      res.json({...rows[0]})
+    })
+    .catch(err => console.log("Error with getCompletedStory", err))
 })
 
 router.delete('/:id/contributions/:id', (req, res) => {

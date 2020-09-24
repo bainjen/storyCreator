@@ -91,4 +91,4 @@ const deleteContribution = (id) => {
 }
 
 
-module.exports = { getUpVotes, getStoryContributions, addContribution, getCompletedStory, incompleteStory, addUpVote };
+module.exports = { getUpVotes, getStoryContributions, addContribution, getCompletedStory, incompleteStory, addUpVote, getCompletedStory };
