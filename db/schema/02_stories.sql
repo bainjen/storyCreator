@@ -10,3 +10,9 @@ CREATE TABLE stories (
   published BOOLEAN NOT NULL DEFAULT FALSE,
   completed_at TIMESTAMP NULL DEFAULT NULL
 );
+
+
+-- //need to update query to grab the text from contrinutions where the story id on contributions = story contribution on contribution TABLE
+-- and accpeted_at = true
+
+-- //put request accept contribution put request to true
