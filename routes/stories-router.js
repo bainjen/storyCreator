@@ -95,8 +95,9 @@ router.post('/', (req, res) => {
 });
 
 // Endpoint for updating the contributions
-router.put('/:id/contributions/:id', (req, res) => {
-  updateStory()
+router.put('/:id', (req, res) => {
+// option 2: do you like 89 to 94
+// option 1: just return a response saying okay // follow in app.js the process in upVote function
 })
 
 router.delete('/:id/contributions/:id', (req, res) => {

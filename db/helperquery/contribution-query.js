@@ -6,14 +6,15 @@ db.connect();
 
 const getStoryContributions = (id) => {
   const queryString = `SELECT stories.id, stories.title, stories.beginning_story,
-  contributions.text_addon, contributions.accepted_at, users.name, COUNT(upVotes.contribution_id)
+  contributions.text_addon, contributions.accepted_at, users.name, contributions.id,
+  COUNT(upVotes.contribution_id)
   FROM contributions
   JOIN users ON users.id = name_id
   RIGHT JOIN stories on stories.id = story_id
   FULL OUTER JOIN upVotes ON contributions.id = contribution_id
   WHERE stories.id = $1
   GROUP BY upVotes.contribution_id, stories.id, stories.title, stories.beginning_story,
-  contributions.text_addon, contributions.accepted_at, users.name;`
+  contributions.text_addon, contributions.accepted_at, users.name, contributions.id;`
 
   return db.query(queryString, [id])
     .then((response) => {
@@ -25,8 +26,8 @@ const getStoryContributions = (id) => {
 const addContribution = (contributions) => {
 
   const queryString = `INSERT INTO contributions ( story_id, name_id, text_addon, accepted_at)
-  VALUES ($1, $2, $3, NOW())
-  RETURNING *;`;
+  VALUES ($1, $2, $3, NULL)
+  RETURNING *;`; // @TODO REVISIT ACCEPTED AT GOD WHAT ARE YOU THINKING
 
   const values = [contributions.story_id, contributions.name_id, contributions.text_addon];
   return db.query(queryString, values)

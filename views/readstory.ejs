@@ -83,7 +83,7 @@
                       <h3><%= contribution.text_addon %></h3>
                       <p><%= contribution.accepted_at %></p>
                       <div id="count" data-id=<%=story.id%>><%=contribution.count%></div>
-                      <button class="btn" id="like" type="button"> ✍️ </button>
+                      <button class="btn like-btn" id="like" type="button" story-id=<%=story.id%> contribution-id=<%=contribution.id%>> ✍️ </button>
                     </div>
                 <% } %>
               <% } %>
