@@ -4,6 +4,7 @@ const dbParams = require('../../lib/db.js');
 const db = new Pool(dbParams);
 db.connect();
 
+// Grab all contributions related to a single Author Story
 const getStoryContributions = (id) => {
   const queryString = `SELECT stories.id, stories.title, stories.beginning_story,
   contributions.text_addon, contributions.accepted_at, users.name, contributions.id,
@@ -23,8 +24,8 @@ const getStoryContributions = (id) => {
     .catch((err) => console.log("Error for getStoryContributions", err));
 }
 
+// Add a story contribution to a story in progress
 const addContribution = (contributions) => {
-
   const queryString = `INSERT INTO contributions ( story_id, name_id, text_addon, accepted_at)
   VALUES ($1, $2, $3, NULL)
   RETURNING *;`; // @TODO REVISIT ACCEPTED AT GOD WHAT ARE YOU THINKING
@@ -35,15 +36,11 @@ const addContribution = (contributions) => {
     .catch((err) => console.log("Error for addContribution", err));
 }
 
-// const getCompletedStory = (id) => {
-//   const queryString = `SELECT published FROM stories WHERE published = TRUE;`
-//   return db.query(queryString, [id])
-//     .then(res => {
-//       return res.rows;
-//     })
-//     .catch(err => console.log("Error for getCompletedStory", err));
-// }
-
+/**
+ *
+ * @param {*} function query on DB
+ * @returns Grabs all stories where published boolean is false
+ */
 const incompleteStory = (id) => {
   const queryString = `SELECT stories.title, stories.beginning_story FROM stories WHERE published = FALSE;`
   return db.query(queryString, [id])
@@ -53,26 +50,28 @@ const incompleteStory = (id) => {
     .catch(err => console.log("Error for incompleteStory", err));
 }
 
+/**
+ * @param {*} addUpVote function query on DB
+ * @return Adds total upVotes for a certain story contribution
+ */
 const addUpVote = (contributionId, name_id) => {
   const queryString = `INSERT INTO upVotes (contribution_id, name_id)
   VALUES ($1, $2)
   RETURNING *;`
   return db.query(queryString, [contributionId, name_id])
-    // .then(res => {
-    //   return res.rows[0];
-    // })
-    // .catch(err => {
-    //   console.log('error for addupvote', err)
-    //   throw 'SOMETHING WRONG HERE SHIT hAPPENED';
-    // })
 }
 
+/**
+ * @param {*} getUpVotes function query on DB
+ * @return Grabs all upVotes for a story contribution
+ */
 const getUpVotes = (contributionId) => {
   const queryString = `SELECT COUNT(*) FROM upVotes
   WHERE contribution_id = $1;`
   return db.query(queryString, [contributionId])
 }
 
+// Grabs the completed story including story contributions
 const getCompletedStory = (storyid) => {
   const queryString = `SELECT stories.title as titles,
   stories.beginning_story as storytext,
@@ -85,15 +84,25 @@ const getCompletedStory = (storyid) => {
   return db.query(queryString,[storyid])
 }
 
+// @TODO function to implement to give author ability to remove a contribution
 const deleteContribution = (id) => {
   const queryString = `DELETE FROM contributions WHERE id =$1;`
     return db.query(queryString, [id])
 }
 
+// Update a contribution boolean to true when story contribution has been accepted by Author
 const updateAcceptedAtTrue = (contributionId) => {
   const queryString = `UPDATE contributions SET accepted_at = TRUE WHERE id = $1;`
   return db.query(queryString, [contributionId])
 }
 
-
-module.exports = { updateAcceptedAtTrue, getUpVotes, getStoryContributions, addContribution, getCompletedStory, incompleteStory, addUpVote, getCompletedStory };
+module.exports = {
+  updateAcceptedAtTrue,
+  getUpVotes,
+  getStoryContributions,
+  addContribution,
+  getCompletedStory,
+  incompleteStory,
+  addUpVote,
+  getCompletedStory
+};
