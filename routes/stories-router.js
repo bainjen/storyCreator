@@ -96,10 +96,7 @@ router.post('/', (req, res) => {
 
 // Endpoint for updating the contributions
 router.put('/:id', (req, res) => {
-// option 2: do you like 89 to 94
-// option 1: just return a response saying okay // follow in app.js the process in upVote function
-// console.log('req.body log', req.body)
-//need to update the story, then grab the updated story
+
   updateAcceptedAtTrue(req.body.contributionId)
     .then((response) => {
       console.log("WHAT IS REQ> BODY", req.body.contributionId)
@@ -113,9 +110,13 @@ router.put('/:id', (req, res) => {
     .catch(err => console.log("Error with getCompletedStory", err))
 })
 
-router.delete('/:id/contributions/:id', (req, res) => {
+router.put('/:id/publish', (req, res) => {
 
-})
+});
+
+// router.delete('/:id/contributions/:id', (req, res) => {
+
+// })
 
 module.exports = router;
 

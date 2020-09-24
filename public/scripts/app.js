@@ -51,7 +51,7 @@ $(document).ready(function () {
    * @return {boolean} if the upVote was successful.
    */
   const addupVote = function(contributionid) {
-    console.log("WHAT ARE YOU MY GOOD FRIEND", $(this))
+    // console.log("WHAT ARE YOU MY GOOD FRIEND", $(this))
     $.ajax({
       url: `/contributions/${contributionid}/upVotes`,
       method:'POST',
@@ -66,12 +66,12 @@ $(document).ready(function () {
   };
 
   $(".like-btn").on("click", function(e) {
-    console.log("THIS EEEEEEE", e.target)
-    console.log("CLICK!!!!!!!!");
+    // console.log("THIS EEEEEEE", e.target)
+    // console.log("CLICK!!!!!!!!");
     let storyid =$(this).attr("story-id")
     let contributionid = $(this).attr("contribution-id")
-    console.log("WHAT IS STORYID", storyid)
-    console.log("WHAT IS CONTRIBUTIONID", contributionid)
+    // console.log("WHAT IS STORYID", storyid)
+    // console.log("WHAT IS CONTRIBUTIONID", contributionid)
     addupVote.call(this, contributionid);
   });
 
@@ -92,10 +92,7 @@ $(document).ready(function () {
       dataType: 'json',
       data: {contributionId: contributionId},
       success: (response) => {
-        //so we can loop through here OR create a function thats loops the data and call it in here
         console.log("It works", response)
-        //clear parent .append before the loop
-        //need to figure out how to not clear out story beginning
         $('.append').html('');
         $('.append').append(response[0].storytext);
         for (let text of response) {
@@ -114,6 +111,8 @@ $(document).ready(function () {
     e.preventDefault();
     let addStoryId = $(this).children().attr("story-Id")
     const contributionId = $(this).parent().find('#mainvalue').val();
+    //@TODO need to fine tune this functionality below to hide div
+    // $(this).parent.hide();
     console.log("AM I ADDING THIS", contributionId)
 
     // console.log('WHAT IS ADD-CONTRIBUTION-ID', addContributionId);
