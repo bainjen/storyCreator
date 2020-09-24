@@ -110,12 +110,13 @@ router.put('/:id', (req, res) => {
     .catch(err => console.log("Error with getCompletedStory", err))
 })
 
-router.put('/:id/publish', (req, res) => {
+router.post('/:id/publish', (req, res) => {
 
   storyPublished(req.params.id)
     .then(() => {
-    res.send('story has been published')
-  })
+    res.redirect('/stories/me')
+    })
+    .catch(err => console.log("Error with storyPublished", err))
 });
 
 // router.delete('/:id/contributions/:id', (req, res) => {

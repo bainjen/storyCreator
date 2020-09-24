@@ -50,25 +50,25 @@ $(document).ready(function () {
    * @param {number} contributionid the id of a specific contribution.
    * @return {boolean} if the upVote was successful.
    */
-  const addupVote = function(contributionid) {
+  const addupVote = function (contributionid) {
     // console.log("WHAT ARE YOU MY GOOD FRIEND", $(this))
     $.ajax({
       url: `/contributions/${contributionid}/upVotes`,
-      method:'POST',
-      dataType:'json',
-      success: ({count}) => {
+      method: 'POST',
+      dataType: 'json',
+      success: ({ count }) => {
         $(this).siblings('#count').text(count);
       },
-      error:  (error) => {
+      error: (error) => {
         console.log('error from votes', error);
       }
     });
   };
 
-  $(".like-btn").on("click", function(e) {
+  $(".like-btn").on("click", function (e) {
     // console.log("THIS EEEEEEE", e.target)
     // console.log("CLICK!!!!!!!!");
-    let storyid =$(this).attr("story-id")
+    let storyid = $(this).attr("story-id")
     let contributionid = $(this).attr("contribution-id")
     // console.log("WHAT IS STORYID", storyid)
     // console.log("WHAT IS CONTRIBUTIONID", contributionid)
@@ -88,9 +88,9 @@ $(document).ready(function () {
     console.log("WHAT ARE YOU????", storyid)
     $.ajax({
       url: `/stories/${storyid}`,
-      method:'PUT',
+      method: 'PUT',
       dataType: 'json',
-      data: {contributionId: contributionId},
+      data: { contributionId: contributionId },
       success: (response) => {
         console.log("It works", response)
         $('.append').html('');
@@ -101,7 +101,7 @@ $(document).ready(function () {
           }
         }
       },
-      error:  (error) => {
+      error: (error) => {
         console.log('error from addContribution', error);
       }
     });
@@ -120,33 +120,33 @@ $(document).ready(function () {
 
   })
 
+  const publishStory = function (storyid) {
+    $.ajax({
+      url: `/stories/${storyid}/publish`,
+      method: 'PUT',
+      dataType: 'json',
+      data: {},
+      success: (response) => {
+        console.log("It works", response)
+      },
+      error: (error) => {
+        console.log('error from publishStory', error);
+      }
+    });
+  }
 
-  /// if contributions.accepted_at === true then contribution_text.appendTo(body of the story)
+  // $(".publish").on("submit", function (e) {
+  //   // e.preventDefault();
+  //   // const storyId = $('button.publish').attr('publish-id');
+  //   // publishStory(storyId);
+  //   // let publishStatus = $(this).children().attr("publish-id");
+  //   // console.log('THIS IS THIS LOL', publishStatus);
 
-// $(document).ready(function () {
-//   loadContributions();
+  // })
 
-  //   // //form submit handler
-  //   // const $submitTweet = $('#submit-tweet');
-  //   // $submitTweet.on('submit', function (e) {
-  //   //   e.preventDefault();
-  //   //   const serializedData = $(this).serialize();
-  //   //   //handle errors
-  //   //   removeError();
-  //   //   if ($('#tweet-text').val() === '' || null) {
-  //   //     appendError("You're a goose! 🐙 Type something! Anything!");
-  //   //   } else if ($('#tweet-text').val().length > 140) {
-  //   //     appendError("Ope! Too many characters 🙈 Love that enthusiasm! 💙 Just keep it under 140!")
-  //   //   } else {
-  //   //     //post tweets
-  //   //     $.post('/tweets', serializedData)
-  //   //       .then((response) => {
-  //   //         loadTweets();
-  //   //         $(this).children('textarea').val('');
-  //   //         resetCounter();
-  //   //       })
-  //   //   }
-  //   // });
-  //   });
+
+
+
+
 });
 

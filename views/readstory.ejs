@@ -47,8 +47,8 @@
 
     <% if(user == story.name_id) { %>
 
-      <form class="publish" action='/stories/<%= story.id %>/publish' method='PUT'>
-        <button class="publish" type="submit" story-id=<%=story.id%>> THIS IS THE PUBLISH BUTTON </button>
+      <form class="publish" action='/stories/<%= story.id %>/publish' method='POST'>
+        <button class="publish" type="submit" publish-id=<%=story.id%>> THIS IS THE PUBLISH BUTTON </button>
       </form>
 
     <% for (let contribution of contributions) {
