@@ -81,25 +81,39 @@ $(document).ready(function () {
     return div.innerHTML;
   }
 
-  const addContribution = function (addStory) {
-    let storyid = $(this).attr("story-id")
+  // console.log("WHAT IS THE MAIN VLAUE", $("#mainvalue").val())
+
+  const addContribution = function (storyid) {
+    // let storyid = $("#mainvalue").val();
+    console.log("WHAT ARE YOU????", storyid)
     $.ajax({
       url: `/stories/${storyid}`,
       method:'PUT',
       dataType: 'json',
-      data: addStory,
+      data: {contributionId: $("#mainvalue").val()},
+      success: (response) => {
+        //so we can loop through here OR create a function thats loops the data and call it in here
+        console.log("It works", response)
+        for (let text of response) {
+          $('.append').append(text.contributiontext)
+          $('contribution-id').hide();
+        }
+      },
       error:  (error) => {
         console.log('error from addContribution', error);
       }
     });
-  }
+  }g
 
+  $(".add-contribution").on("submit", function (e) {
+    e.preventDefault();
+    let addContributionId = $(this).children().attr("story-Id")
+    console.log("AM I ADDING THIS", addContributionId)
 
-  $(".add-btn").on("click", function (e) {
-    // let addContributionId = $(this).attr("add-contribution-id")
     // console.log('WHAT IS ADD-CONTRIBUTION-ID', addContributionId);
-    addContribution({ add: true });
+    addContribution(addContributionId);
   })
+
 
   /// if contributions.accepted_at === true then contribution_text.appendTo(body of the story)
 

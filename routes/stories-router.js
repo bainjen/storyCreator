@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { browseStory, getStoryById, addStory, browseSelectStories, updateStory} = require('../db/helperquery/story-query');
-const { getStoryContributions, addContribution, addUpVote, getCompletedStory } = require('../db/helperquery/contribution-query');
+const { getStoryContributions, addContribution, addUpVote, getCompletedStory, updateAcceptedAtTrue } = require('../db/helperquery/contribution-query');
 const { getUserStoriesByUserId } = require('../db/helperquery/users-queries');
 const { urlencoded } = require('body-parser');
 
@@ -97,14 +97,18 @@ router.post('/', (req, res) => {
 router.put('/:id', (req, res) => {
 // option 2: do you like 89 to 94
 // option 1: just return a response saying okay // follow in app.js the process in upVote function
-  console.log('req.body log', req.body)
-  //need to update the story, then grab the updated story
-  getStoryById
-  // getCompletedStory()
-  //   .then(({rows}) => {
-  //     console.log("COUNT ROWS!!", rows[0])
-  //     res.json({...rows[0]})
-  //   })
+// console.log('req.body log', req.body)
+//need to update the story, then grab the updated story
+  updateAcceptedAtTrue(req.body.contributionId)
+    .then((response) => {
+      console.log("WHAT IS REQ> BODY", req.body.contributionId)
+      console.log("REPSONSE BEFORE COMPLETED STORY", response)
+      return getCompletedStory(req.params.id);
+    })
+    .then((response) => {
+      console.log("RESPONSE AFTER COMPLETE STORY", response.rows)
+      res.json(response.rows)
+    })
     .catch(err => console.log("Error with getCompletedStory", err))
 })
 

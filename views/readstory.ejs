@@ -41,23 +41,30 @@
     </div>
 
     <% if(user == story.name_id) { %>
-    <div class='author'>
       <% for (let contribution of contributions) { %>
-      <div class='submitted-by'>
-        <p>submitted by:</p>
-        <p><%= contribution.name %></p>
+      <div class='author' contribution-id=<%=contribution.id%>>
+        <div class='submitted-by'>
+          <p>submitted by:</p>
+          <p><%= contribution.name %></p>
+        </div>
+        <h3><%= contribution.text_addon %></h3>
+        <p><%= contribution.accepted_at %></p>
+
+        <textarea id="mainvalue"><%= contribution.id %></textarea>
+
+        <form class="add-contribution" action='/stories/<%= story.id %>' method='PUT'>
+          <button class="add-btn" type="submit" story-id=<%=story.id%> contribution-id=<%=contribution.id%>> Add This Contribution</button>
+        </form>
+        <form class="delete-contribution" action='/stories/<%= story.id %>' method='POST'>
+          <button class="delete" type="sumbit">Delete This Contribution</button>
+        </form>
       </div>
-      <h3><%= contribution.text_addon %></h3>
-      <p><%= contribution.accepted_at %></p>
-      <form class="add-delete" action='/stories/<%= story.id %>' method='POST'>
-        <button class="add-btn" type="submit" add-contribution-id=<%=contribution.id%>> Add This Contribution</button>
-        <button class="delete" type="sumbit">Delete This Contribution</button>
-      </form>
       <% } %>
+
+    </div>
       <p>THIS IS THE SECRET SIGNAL💕</p>
     </div>
 
-    </div>
 
     <!-- Features - ADD delete and publish -->
     <% } else { %>
@@ -83,6 +90,7 @@
           <h3><%= contribution.text_addon %></h3>
           <p><%= contribution.accepted_at %></p>
           <div id="count" data-id=<%=story.id%>><%=contribution.count%></div>
+
           <button class="btn like-btn" id="like" type="button" story-id=<%=story.id%>
             contribution-id=<%=contribution.id%>> ✍️ </button>
         </div>

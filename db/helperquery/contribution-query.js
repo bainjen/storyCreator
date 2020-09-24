@@ -73,16 +73,16 @@ const getUpVotes = (contributionId) => {
   return db.query(queryString, [contributionId])
 }
 
-const getCompletedStory = () => {
+const getCompletedStory = (storyid) => {
   const queryString = `SELECT stories.title as titles,
   stories.beginning_story as storytext,
   contributions.text_addon as contributiontext
   FROM contributions
   JOIN stories on stories.id = story_id
-  WHERE stories.published = true
-  ORDER BY contribution.id;`
+  WHERE stories.id = $1 AND contributions.accepted_at = TRUE
+  ORDER BY contributions.id;`
 
-  return db.query(queryString)
+  return db.query(queryString,[storyid])
 }
 
 const deleteContribution = (id) => {
@@ -90,5 +90,10 @@ const deleteContribution = (id) => {
     return db.query(queryString, [id])
 }
 
+const updateAcceptedAtTrue = (contributionId) => {
+  const queryString = `UPDATE contributions SET accepted_at = TRUE WHERE id = $1;`
+  return db.query(queryString, [contributionId])
+}
 
-module.exports = { getUpVotes, getStoryContributions, addContribution, getCompletedStory, incompleteStory, addUpVote, getCompletedStory };
+
+module.exports = { updateAcceptedAtTrue, getUpVotes, getStoryContributions, addContribution, getCompletedStory, incompleteStory, addUpVote, getCompletedStory };
