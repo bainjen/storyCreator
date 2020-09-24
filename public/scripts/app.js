@@ -28,6 +28,7 @@ $(document).ready(function () {
     }
   };
 
+  // @TODO A function that we haven't figured out how to implement YET
   const loadContributions = (storyid) => {
     $.ajax({
       url: `/stories/${storyid}`, //????
@@ -42,11 +43,7 @@ $(document).ready(function () {
     });
   };
 
-  console.log("THiS IS WHERE WE ARE")
-  console.log($('#like'));
-
   /**
-   *
    * @param {number} contributionid the id of a specific contribution.
    * @return {boolean} if the upVote was successful.
    */
@@ -65,6 +62,7 @@ $(document).ready(function () {
     });
   };
 
+  // Event listener for like button to upVote
   $(".like-btn").on("click", function (e) {
     // console.log("THIS EEEEEEE", e.target)
     // console.log("CLICK!!!!!!!!");
@@ -79,10 +77,9 @@ $(document).ready(function () {
     let div = document.createElement('div');
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
-  }
+  };
 
-  // console.log("WHAT IS THE MAIN VLAUE", $("#mainvalue").val())
-
+  // A function to dynamically add a contribution to a authors story
   const addContribution = function (storyid, contributionId) {
     // let storyid = $("#mainvalue").val();
     console.log("WHAT ARE YOU????", storyid)
@@ -105,8 +102,9 @@ $(document).ready(function () {
         console.log('error from addContribution', error);
       }
     });
-  }
+  };
 
+  // Event listener for author add a contribution to his/her story
   $(".add-contribution").on("submit", function (e) {
     e.preventDefault();
     let addStoryId = $(this).children().attr("story-Id")
@@ -114,12 +112,11 @@ $(document).ready(function () {
     //@TODO need to fine tune this functionality below to hide div
     // $(this).parent.hide();
     console.log("AM I ADDING THIS", contributionId)
-
-    // console.log('WHAT IS ADD-CONTRIBUTION-ID', addContributionId);
     addContribution(addStoryId, contributionId);
 
   })
 
+  // @TODO a function we have yet to implement and figure out
   const publishStory = function (storyid) {
     $.ajax({
       url: `/stories/${storyid}/publish`,
@@ -135,6 +132,7 @@ $(document).ready(function () {
     });
   }
 
+  // @TODO Event listener we have yet to figure out how to implement
   // $(".publish").on("submit", function (e) {
   //   // e.preventDefault();
   //   // const storyId = $('button.publish').attr('publish-id');
@@ -143,10 +141,5 @@ $(document).ready(function () {
   //   // console.log('THIS IS THIS LOL', publishStatus);
 
   // })
-
-
-
-
-
 });
 
