@@ -22,12 +22,13 @@ const browseSelectStories = (id) => {
 }
 
 // to grab story/:id to read (GET)
+//removed this line because it was throwing an ejs error, but it also solved a previous problem  'AND contributions.accepted_at = true'
 const getStoryById = (id) => {
   return db.query(`SELECT stories.*, users.name, contributions.text_addon,
     contributions.accepted_at FROM stories JOIN users ON
     users.id = stories.name_id
     JOIN contributions ON contributions.id = story_id
-    WHERE stories.id = $1 AND contributions.accepted_at = true;`, [id])
+    WHERE stories.id = $1;`, [id])
     .then((response) => {
       return response.rows[0];
     })

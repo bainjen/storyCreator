@@ -44,9 +44,10 @@ router.get('/me', (req, res) => {
 
 router.get('/:id', (req, res) => {
   let templateVars = { user: req.session.userid };
+  console.log(req.params.id)
   getStoryById(req.params.id)
     .then((story) => {
-      // res.json({ myStories });
+      console.log('This is story:', story);
       templateVars.story = story;
       // console.log('TEMPLATEVARS', templateVars);
       // res.json({ stories })

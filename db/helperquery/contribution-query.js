@@ -79,7 +79,7 @@ const getCompletedStory = (storyid) => {
   contributions.text_addon as contributiontext
   FROM contributions
   JOIN stories on stories.id = story_id
-  WHERE stories.id = $1 AND contributions.accepted_at = TRUE
+  WHERE stories.id = $1
   ORDER BY contributions.id;`
 
   return db.query(queryString,[storyid])

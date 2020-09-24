@@ -83,35 +83,40 @@ $(document).ready(function () {
 
   // console.log("WHAT IS THE MAIN VLAUE", $("#mainvalue").val())
 
-  const addContribution = function (storyid) {
+  const addContribution = function (storyid, contributionId) {
     // let storyid = $("#mainvalue").val();
     console.log("WHAT ARE YOU????", storyid)
     $.ajax({
       url: `/stories/${storyid}`,
       method:'PUT',
       dataType: 'json',
-      data: {contributionId: $("#mainvalue").val()},
+      data: {contributionId: contributionId},
       success: (response) => {
         //so we can loop through here OR create a function thats loops the data and call it in here
         console.log("It works", response)
+        //clear parent .append before the loop
+        $('.append').html('');
         for (let text of response) {
-          $('.append').append(text.contributiontext)
-          $('contribution-id').hide();
+          if (text.contributiontext) {
+            $('.append').append(text.contributiontext)
+          }
         }
       },
       error:  (error) => {
         console.log('error from addContribution', error);
       }
     });
-  }g
+  }
 
   $(".add-contribution").on("submit", function (e) {
     e.preventDefault();
-    let addContributionId = $(this).children().attr("story-Id")
-    console.log("AM I ADDING THIS", addContributionId)
+    let addStoryId = $(this).children().attr("story-Id")
+    const contributionId = $(this).parent().find('#mainvalue').val();
+    console.log("AM I ADDING THIS", contributionId)
 
     // console.log('WHAT IS ADD-CONTRIBUTION-ID', addContributionId);
-    addContribution(addContributionId);
+    addContribution(addStoryId, contributionId);
+
   })
 
 
