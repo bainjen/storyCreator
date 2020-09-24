@@ -3,6 +3,7 @@ const router = express.Router();
 const { getUpVotes, getStoryContributions, addUpVote } = require('../db/helperquery/contribution-query');
 
 // GET Route to /contributions/:id
+// Grabs all contributions related to a single Author Story
 router.get('/:id', (req, res) => {
   getStoryContributions(req.params.id)
     .then((contributions) => {
@@ -12,6 +13,8 @@ router.get('/:id', (req, res) => {
 });
 
 // POST Route to /contributions/:id/upVotes
+// A route that adds up total upVotes for a story contribution and
+// then returns the total upVotes for that contribution
 router.post('/:id/upVotes', (req, res) => {
   const userid = req.session.userid;
   addUpVote(req.params.id, userid)
