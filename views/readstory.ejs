@@ -27,6 +27,12 @@
       <h3> story started by: <%= story.name %></h3>
       <img src="<%= story.img_url %>"></img>
       <p><%= story.beginning_story %></p>
+
+      <% for (let contribution of contributions) { %>
+        <% if (contribution.accepted_at) { %>
+          <p><%= contribution.text_addon%><p>
+          <% } %>
+        <% } %>
       <p><%= story.created_at %></p>
       <p class ='status'>STATUS: COMPLETED</p>
     <% } else { %>
@@ -53,7 +59,6 @@
 
     <% for (let contribution of contributions) {
       if (contribution.accepted_at) { %>
-
     <% } else { %>
     <div class='author' contribution-id=<%=contribution.id%>>
       <div class='submitted-by'>
