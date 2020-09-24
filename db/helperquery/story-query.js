@@ -23,12 +23,19 @@ const browseSelectStories = (id) => {
 
 // to grab story/:id to read (GET)
 const getStoryById = (id) => {
-  return db.query("SELECT stories.*, users.name FROM stories JOIN users ON users.id = stories.name_id WHERE stories.id = $1;", [id])
+  return db.query(`SELECT stories.*, users.name, contributions.text_addon,
+    contributions.accepted_at FROM stories JOIN users ON
+    users.id = stories.name_id
+    JOIN contributions ON contributions.id = story_id
+    WHERE stories.id = $1 AND contributions.accepted_at = true;`, [id])
     .then((response) => {
       return response.rows[0];
     })
     .catch((err) => console.log("Error for getStoryById", err));
 }
+//We changed querystring in attempt to get a story with its accepted contibution texts
+// "SELECT stories.*, users.name FROM stories JOIN users ON users.id = stories.name_id WHERE stories.id = $1;"
+
 
 // we have to GET the FORM(to start the story) (GET)
 //creates a new story in the database
