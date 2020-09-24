@@ -45,11 +45,16 @@
       <h3>IN PROGRESS</h3>
     </div>
 
-    <% if(user == story.name_id) {
+    <% if(user == story.name_id) { %>
 
-     for (let contribution of contributions) {
+      <form class="publish" action='/stories/<%= story.id %>/publish' method='PUT'>
+        <button class="publish" type="submit" story-id=<%=story.id%>> THIS IS THE PUBLISH BUTTON </button>
+      </form>
+
+    <% for (let contribution of contributions) {
       if (contribution.accepted_at) { %>
     <div></div>
+
     <% } else { %>
     <div class='author' contribution-id=<%=contribution.id%>>
       <div class='submitted-by'>

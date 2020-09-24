@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { browseStory, getStoryById, addStory, browseSelectStories, updateStory} = require('../db/helperquery/story-query');
+const { browseStory, getStoryById, addStory, browseSelectStories, updateStory, storyPublished } = require('../db/helperquery/story-query');
 const { getStoryContributions, addContribution, addUpVote, getCompletedStory, updateAcceptedAtTrue } = require('../db/helperquery/contribution-query');
 const { getUserStoriesByUserId } = require('../db/helperquery/users-queries');
 const { urlencoded } = require('body-parser');
@@ -112,6 +112,10 @@ router.put('/:id', (req, res) => {
 
 router.put('/:id/publish', (req, res) => {
 
+  storyPublished(req.params.id)
+    .then(() => {
+    res.send('story has been published')
+  })
 });
 
 // router.delete('/:id/contributions/:id', (req, res) => {
