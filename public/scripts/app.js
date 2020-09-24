@@ -97,6 +97,8 @@ $(document).ready(function () {
             $('.append').append(`<p>${text.contributiontext}</p>`)
           }
         }
+        $('.cont-body.author').hide();
+        window.location.reload();
       },
       error: (error) => {
         console.log('error from addContribution', error);
@@ -113,7 +115,6 @@ $(document).ready(function () {
     // $(this).parent.hide();
     console.log("AM I ADDING THIS", contributionId)
     addContribution(addStoryId, contributionId);
-
   })
 
   // @TODO a function we have yet to implement and figure out

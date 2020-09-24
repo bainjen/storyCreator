@@ -4,10 +4,28 @@ header {
   margin: none;
 
   nav {
+
     display: flex;
     height: 150px;
     justify-content: space-between;;
     align-items: flex-end;
+
+        textarea{
+        border-style: hidden;
+        border-bottom: 3px solid  #545149;
+        background-color: rgb(255, 224, 229);
+        resize: none;
+        line-height: 1.5;
+        font-size: 24px;
+        // width: 80%;
+        // height: 20%;
+        font-family: 'Josefin Sans', sans-serif;
+        word-wrap: break-word;
+        // word-break: break-all;
+        margin: 1em;
+        font-size: 24px;
+        }
+
     h1 {
       margin: 1em;
       font-size: 32px;
@@ -18,6 +36,14 @@ header {
       display: flex;
       list-style-type: none;
       font-size: 24px;
+
+      a:hover {
+        color: rgb(255, 224, 229);
+      }
+
+      a:visited {
+        color: white;
+      }
 
       li {
         margin: 5px;

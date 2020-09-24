@@ -13,12 +13,13 @@
     border: solid thin black;
     width: 70%;
     margin: 1em;
+    align-items: center;
 
     img {
       // margin: .5em;
       align-self: center;
       display: inline-block;
-      max-width: 80%;
+      max-width: 50%;
       margin-right: 5px;
       // content: "";
       background-size: 100%;
@@ -74,6 +75,8 @@
   // width: 90%;
   display: flex;
   flex-direction: row-reverse;
+  width: 70%;
+  justify-content: center;
 
 form.contribution {
   border: solid thin black;
@@ -87,8 +90,8 @@ form.contribution {
     font-size: 24px;
   }
 
-  textarea{
-    border-style: hidden;
+  textarea {
+  border-style: hidden;
   border-bottom: 3px solid  #545149;
   background-color: rgb(255, 224, 229);
   resize: none;
@@ -113,6 +116,10 @@ form.contribution {
     border-radius: 10px;
     width: 75%;
   }
+
+  // #like.btn.like-btn {
+  //   font-size: 34px;
+  // }
 }
 
 }
