@@ -35,6 +35,11 @@
       <img src="<%= story.img_url %>"></img>
       <div class="append">
         <p><%= story.beginning_story %></p>
+        <% for (let contribution of contributions) {
+          if (contribution.accepted_at) { %>
+        <p><%= contribution.text_addon %></p>
+        <% }
+        } %>
       </div>
       <p><%= story.created_at %></p>
       <h3>IN PROGRESS</h3>
@@ -44,28 +49,28 @@
 
      for (let contribution of contributions) {
       if (contribution.accepted_at) { %>
-          <div></div>
-     <% } else { %>
-          <div class='author' contribution-id=<%=contribution.id%>>
-            <div class='submitted-by'>
-              <p>submitted by:</p>
-              <p><%= contribution.name %></p>
-            </div>
-            <h3><%= contribution.text_addon %></h3>
-            <p><%= contribution.accepted_at %></p>
+    <div></div>
+    <% } else { %>
+    <div class='author' contribution-id=<%=contribution.id%>>
+      <div class='submitted-by'>
+        <p>submitted by:</p>
+        <p><%= contribution.name %></p>
+      </div>
+      <h3><%= contribution.text_addon %></h3>
+      <p><%= contribution.accepted_at %></p>
 
-            <textarea id="mainvalue"><%= contribution.id %></textarea>
+      <textarea id="mainvalue"><%= contribution.id %></textarea>
 
-            <form class="add-contribution" action='/stories/<%= story.id %>' method='PUT'>
-              <button class="add-btn" type="submit" story-id=<%=story.id%> contribution-id=<%=contribution.id%>> Add This
-                Contribution</button>
-            </form>
-            <form class="delete-contribution" action='/stories/<%= story.id %>' method='POST'>
-              <button class="delete" type="sumbit">Delete This Contribution</button>
-            </form>
-          </div>
-        <% } %>
-      <% } %>
+      <form class="add-contribution" action='/stories/<%= story.id %>' method='PUT'>
+        <button class="add-btn" type="submit" story-id=<%=story.id%> contribution-id=<%=contribution.id%>> Add This
+          Contribution</button>
+      </form>
+      <form class="delete-contribution" action='/stories/<%= story.id %>' method='POST'>
+        <button class="delete" type="sumbit">Delete This Contribution</button>
+      </form>
+    </div>
+    <% } %>
+    <% } %>
 
 
     </div>

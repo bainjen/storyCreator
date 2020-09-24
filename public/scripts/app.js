@@ -95,10 +95,12 @@ $(document).ready(function () {
         //so we can loop through here OR create a function thats loops the data and call it in here
         console.log("It works", response)
         //clear parent .append before the loop
+        //need to figure out how to not clear out story beginning
         $('.append').html('');
+        $('.append').append(response[0].storytext);
         for (let text of response) {
           if (text.contributiontext) {
-            $('.append').append(text.contributiontext)
+            $('.append').append(`<p>${text.contributiontext}</p>`)
           }
         }
       },
