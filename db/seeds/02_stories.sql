@@ -32,7 +32,7 @@ NULL);
 INSERT INTO stories (name_id, beginning_story, title, img_url, published, completed_at)
 VALUES (4,
 'I couldn''t sleep last night, or the night before, or the seven nights before that. There''s now a cot in my office where the floor lamp once stood. I''ve found that it''s simpler to sleep at work than to return home every night. There''s no one to return home to, not anymore at least. Eight days ago we received a message, a warning from the beyond. The galactic address placed the message in the approximate location as planet Earth and it was dated from the same day, in the same year as our now. The sender was Willow Seekle. The recipient was Willow Seekle.',
-'The Many Me''s in the Many Worlds',
+'The Many Mes in the Many Worlds',
 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60',
 FALSE,
 NULL);

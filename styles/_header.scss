@@ -6,7 +6,7 @@ header {
   nav {
 
     display: flex;
-    height: 185px;
+    height: 200px;
     justify-content: space-between;;
     align-items: flex-end;
     padding: .5em;
@@ -25,15 +25,20 @@ header {
         font-family: 'Josefin Sans', sans-serif;
         word-wrap: break-word;
         // word-break: break-all;
-        margin: 1em;
+        margin: 1.5em;
         font-size: 24px;
         color: #50514F;
+        }
+
+        textarea:focus {
+          outline-color: #FFE066;
         }
 
     .right {
       display: flex;
       flex-direction: column;
       align-items: flex-end;
+      margin: 1em;
     }
 
     h1 {

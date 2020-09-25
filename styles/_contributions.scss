@@ -193,6 +193,8 @@ form.contribution {
   label {
     font-size: 24px;
     margin: 1em;
+    color: #247BA0;
+    font-weight: bolder;
   }
 
   textarea {
@@ -204,14 +206,16 @@ form.contribution {
   line-height: 1.5;
   font-size: 24px;
   width: 80%;
-  height: 20%;
+  height: 50%;
   font-family: 'Josefin Sans', sans-serif;
   word-wrap: break-word;
   word-break: break-all;
+  outline-color:#247BA0;
 
 }
     textarea:hover {
-      background-color: #FFE066;
+        outline-color: #FFE066;
+
     }
 
   .btn {

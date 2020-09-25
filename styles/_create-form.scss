@@ -33,7 +33,9 @@ color:  #50514F;
     word-wrap: break-word;
     word-break: break-all;
   }
-
+  textarea:focus {
+    outline-color: #FFE066;
+  }
   .btn {
     background-color: #247BA0;
     color: #FFE066;
