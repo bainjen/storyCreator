@@ -1,19 +1,20 @@
 header {
-  background-color: rgb(228, 88, 90);
+  background-color: #247BA0;
   width: 100%;
   margin: none;
 
   nav {
 
     display: flex;
-    height: 150px;
+    height: 175px;
     justify-content: space-between;;
     align-items: flex-end;
+    padding: .5em;
 
         textarea{
         border-style: hidden;
-        border-bottom: 3px solid  #545149;
-        background-color: rgb(255, 224, 229);
+        border-bottom: 3px solid  #50514F;
+        background-color: #ffffff;
         resize: none;
         line-height: 1.5;
         font-size: 24px;
@@ -24,6 +25,7 @@ header {
         // word-break: break-all;
         margin: 1em;
         font-size: 24px;
+        color: #50514F;
         }
 
     .right {
@@ -33,27 +35,37 @@ header {
     }
 
     h1 {
+      font-family: 'Pacifico', cursive;
       margin: .5em;
-      font-size: 32px;
+      font-size: 48px;
+      color:#FFFFF7;
+        text-transform: none;
     }
 
     ul {
-      margin: 1em;
+      margin: .25em;
       display: flex;
       list-style-type: none;
       font-size: 24px;
-
-      a:hover {
-        color: rgb(255, 224, 229);
-      }
-
-      a:visited {
-        color: white;
-      }
+      color: #FFE066;
 
       li {
-        margin: 5px;
+        margin-left: 10px;
+
+        a {
+          text-decoration: none;
+        }
+
+          a:hover {
+            color: white;
+          }
+
+          a:visited {
+            color: #FFE066;;
+          }
       }
     }
   }
 }
+
+

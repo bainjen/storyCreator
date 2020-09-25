@@ -1,6 +1,7 @@
 .form-div {
 margin: 1em;
 width: 35%;
+color:  #50514F;
 
   h3 {
     margin: .5em;
@@ -19,8 +20,9 @@ width: 35%;
 
   form textarea {
     border-style: hidden;
-    border-bottom: 3px solid  #545149;
-    background-color: rgb(255, 224, 229);
+    border-bottom: 3px solid   #50514F;
+    // background-color: #ffe5e2;
+    color: #247BA0;
     resize: none;
     line-height: 1.5;
     font-size: 24px;
@@ -31,6 +33,8 @@ width: 35%;
   }
 
   .btn {
+    background-color: #247BA0;
+    color: #FFE066;
     font-size: 28px;
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 700;

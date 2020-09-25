@@ -6,8 +6,8 @@ html {
   }
 
   body {
-    background-color: #FFFFF7;
     margin: 0;
+    background-color: white;
     padding: 0;
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 300;
@@ -19,7 +19,7 @@ html {
     }
 
     h1 {
-      color: hsl(193, 38%, 23%);
+      color:#50514F;
     }
 
     main {
@@ -37,10 +37,28 @@ html {
     }
 
     .hide {
-      display:none;
+      display: none;
+    }
+
+    .read-create {
+      margin-top: 5em;
+
     }
   }
+
 }
+
+// gray #50514F
+
+// red #F25F5C
+
+// yellow #FFE066
+
+// blue #247BA0
+
+// green #70C1B3
+
+
 
 // orange
 // #d04c3a
