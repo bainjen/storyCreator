@@ -24,14 +24,14 @@
     <div class='single-story-box'>
       <% if(story.published) {%>
       <h1><%= story.title %></h1>
-      <h3>started by: <%= story.name %></h3>
+      <h3> story started by: <%= story.name %></h3>
       <img src="<%= story.img_url %>"></img>
       <p><%= story.beginning_story %></p>
       <p><%= story.created_at %></p>
       <p class ='status'>STATUS: COMPLETED</p>
     <% } else { %>
       <h1><%= story.title %></h1>
-      <h3>started by: <%= story.name %></h3>
+      <h3>story started by: <%= story.name %></h3>
       <img src="<%= story.img_url %>"></img>
       <div class="append">
         <p><%= story.beginning_story %></p>

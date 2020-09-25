@@ -100,6 +100,8 @@ $(document).ready(function () {
             $('.append').append(`<p>${text.contributiontext}</p>`)
           }
         }
+        $('.cont-body.author').hide();
+        window.location.reload();
       },
       error: (error) => {
         console.log('error from addContribution', error);
@@ -117,7 +119,6 @@ $(document).ready(function () {
 
     // console.log('WHAT IS ADD-CONTRIBUTION-ID', addContributionId);
     addContribution(addStoryId, contributionId);
-
   })
 
   const publishStory = function (storyid) {
