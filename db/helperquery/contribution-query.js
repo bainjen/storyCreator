@@ -14,7 +14,8 @@ const getStoryContributions = (id) => {
   FULL OUTER JOIN upVotes ON contributions.id = contribution_id
   WHERE stories.id = $1
   GROUP BY upVotes.contribution_id, stories.id, stories.title, stories.beginning_story,
-  contributions.text_addon, contributions.accepted_at, users.name, contributions.id;`
+  contributions.text_addon, contributions.accepted_at, users.name, contributions.id
+  ORDER BY contributions.accepted_at;`
 
   return db.query(queryString, [id])
     .then((response) => {
@@ -79,8 +80,8 @@ const getCompletedStory = (storyid) => {
   contributions.text_addon as contributiontext
   FROM contributions
   JOIN stories on stories.id = story_id
-  WHERE stories.id = $1
-  ORDER BY contributions.id;`
+  WHERE stories.id = $1 AND contributions.accepted_at > 0
+  ORDER BY contributions.accepted_at;`
 
   return db.query(queryString,[storyid])
 }
@@ -90,10 +91,14 @@ const deleteContribution = (id) => {
     return db.query(queryString, [id])
 }
 
-const updateAcceptedAtTrue = (contributionId) => {
-  const queryString = `UPDATE contributions SET accepted_at = TRUE WHERE id = $1;`
-  return db.query(queryString, [contributionId])
+const countContributions = (storyid) => {
+  const queryString = `SELECT * FROM contributions WHERE accepted_at > 0 AND story_id = $1;`
+  return db.query(queryString, [storyid])
+}
+const updateAcceptedAtTrue = (accepted_at, contributionId) => {
+  const queryString = `UPDATE contributions SET accepted_at = $1 WHERE id = $2;`
+  return db.query(queryString, [accepted_at, contributionId])
 }
 
 
-module.exports = { updateAcceptedAtTrue, getUpVotes, getStoryContributions, addContribution, getCompletedStory, incompleteStory, addUpVote, getCompletedStory };
+module.exports = { updateAcceptedAtTrue, getUpVotes, getStoryContributions, addContribution, getCompletedStory, incompleteStory, addUpVote, getCompletedStory, countContributions };

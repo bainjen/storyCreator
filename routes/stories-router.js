@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { browseStory, getStoryById, addStory, browseSelectStories, updateStory, storyPublished } = require('../db/helperquery/story-query');
-const { getStoryContributions, addContribution, addUpVote, getCompletedStory, updateAcceptedAtTrue } = require('../db/helperquery/contribution-query');
+const { getStoryContributions, addContribution, addUpVote, getCompletedStory, updateAcceptedAtTrue, countContributions } = require('../db/helperquery/contribution-query');
 const { getUserStoriesByUserId } = require('../db/helperquery/users-queries');
 const { urlencoded } = require('body-parser');
 
@@ -64,7 +64,7 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/:id', (req, res) => {
-console.log('REQ.PARAMS.ID', req.params.id)
+  console.log('REQ.PARAMS.ID', req.params.id)
   // if (!req.body.text) {
   //   res.status(400).json({ error: 'invalid request: no data in POST body' });
   //   return;
@@ -96,25 +96,28 @@ router.post('/', (req, res) => {
 
 // Endpoint for updating the contributions
 router.put('/:id', (req, res) => {
-
-  updateAcceptedAtTrue(req.body.contributionId)
-    .then((response) => {
-      console.log("WHAT IS REQ> BODY", req.body.contributionId)
-      console.log("REPSONSE BEFORE COMPLETED STORY", response)
-      return getCompletedStory(req.params.id);
+  countContributions(req.params.id)
+    .then(({ rows }) => {
+      console.log(rows);
+      updateAcceptedAtTrue(rows.length + 1, req.body.contributionId)
+        .then((response) => {
+          console.log("WHAT IS REQ> BODY", req.body.contributionId)
+          console.log("REPSONSE BEFORE COMPLETED STORY", response)
+          return getCompletedStory(req.params.id);
+        })
+        .then((response) => {
+          console.log("RESPONSE AFTER COMPLETE STORY", response.rows)
+          res.json(response.rows)
+        })
+        .catch(err => console.log("Error with getCompletedStory", err))
     })
-    .then((response) => {
-      console.log("RESPONSE AFTER COMPLETE STORY", response.rows)
-      res.json(response.rows)
-    })
-    .catch(err => console.log("Error with getCompletedStory", err))
 })
 
 router.post('/:id/publish', (req, res) => {
 
   storyPublished(req.params.id)
     .then(() => {
-    res.redirect('/stories/me')
+      res.redirect('/stories/me')
     })
     .catch(err => console.log("Error with storyPublished", err))
 });

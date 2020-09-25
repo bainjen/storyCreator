@@ -19,10 +19,12 @@ const getUserById = (id) => {
 };
 
 const getUserStoriesByUserId = (id) => {
-  const queryString = `SELECT stories.*
+  const queryString = `SELECT stories.*, contributions.*
   FROM stories
   JOIN users ON users.id = stories.name_id
-  WHERE users.id = $1`;
+  JOIN contributions ON contributions.story_id = stories.id
+  WHERE users.id = $1
+  ORDER BY contributions.accepted_at;`;
   return db.query(queryString, [id])
     .then((response) => {
       return response.rows;

@@ -37,6 +37,14 @@ header {
       list-style-type: none;
       font-size: 24px;
 
+      a:hover {
+        color: rgb(255, 224, 229);
+      }
+
+      a:visited {
+        color: white;
+      }
+
       li {
         margin: 5px;
       }
