@@ -5,6 +5,9 @@ INSERT INTO contributions (story_id, name_id, text_addon, accepted_at)
 VALUES (1, 3, 'It had the word "egg salad" shaved into its fur. It certainly didn''t belong to this neighborhood, the type with 2 and 1/2 inch lawns and people casually peeking out their blinds to survey the going-abouts. Any loose dog would have certainly been reported to the HOA.' , 0);
 
 INSERT INTO contributions (story_id, name_id, text_addon, accepted_at)
+VALUES (2, 1, 'The grocery stores were raided immediately. With so few people left to harvest the land, famine quickly followed. Within the year 90% of the population had become lizard people.' , 0);
+
+INSERT INTO contributions (story_id, name_id, text_addon, accepted_at)
 VALUES (3, 2, 'Maybe "unfortunate" is the wrong word. Maybe more "slighly irritating" as Jim had no other redeemable qualities.But Daryll was hungry and he ran out of Hot Pockets at roughly 7:00am yesterday.', 0);
 
 INSERT INTO contributions (story_id, name_id, text_addon, accepted_at)
@@ -12,6 +15,9 @@ VALUES (3, 1, 'He could call up Sharon as she was a chef and would often bring o
 
 INSERT INTO contributions (story_id, name_id, text_addon, accepted_at)
 VALUES (4, 1, 'Sometimes when hungry /I eat butter without bread / without anything', 0);
+
+INSERT INTO contributions (story_id, name_id, text_addon, accepted_at)
+VALUES (5, 2, 'I worked in a button factory the other day. MY boss came up to me and said "Willow, are you busy?" and I said "Yes, I just got a multidimensional letter sent from myself"', 0);
 
 INSERT INTO contributions (story_id, name_id, text_addon, accepted_at)
 VALUES (6, 2, 'another lb of sugar \ 1/2 lb of butter \ 1/2 lb of maple butter', 0);

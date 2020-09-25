@@ -6,7 +6,7 @@ color:  #50514F;
   h3 {
     margin: .5em;
     font-size: 36px;
-    font-family: "Indie Flower";
+    // font-family: "Indie Flower";
   }
 
   form {
@@ -17,7 +17,7 @@ color:  #50514F;
 
   form label {
     font-size: 28px;
-    font-family: "Indie Flower";
+    // font-family: "Indie Flower";
   }
 
   form textarea {
@@ -49,15 +49,16 @@ color:  #50514F;
     width: 75%;
     outline: none;
     height: 52px;
-    background: #fb2525;
-    color: #fff;
+    // background: #fb2525;
+    // color: #fff;
     border-radius: 20px;
   }
 
   img {
    width:  100px;
    height: 100px;
-   object-fit: scale-down;;
+   object-fit: scale-down;
+   border-radius: 10px;
   }
 }
 

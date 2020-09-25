@@ -6,7 +6,7 @@ header {
   nav {
 
     display: flex;
-    height: 175px;
+    height: 185px;
     justify-content: space-between;;
     align-items: flex-end;
     padding: .5em;
@@ -19,6 +19,7 @@ header {
         resize: none;
         line-height: 1.5;
         font-size: 24px;
+        align-self: center;
         // width: 80%;
         // height: 20%;
         font-family: 'Josefin Sans', sans-serif;
@@ -38,7 +39,7 @@ header {
     h1 {
       font-family: 'Pacifico', cursive;
       margin: .5em;
-      font-size: 48px;
+      font-size: 42px;
       color:#FFFFF7;
         text-transform: none;
     }

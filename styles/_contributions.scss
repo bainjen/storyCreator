@@ -26,14 +26,16 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    border: solid 2px #50514F;
+    // border: solid 2px #50514F;
     border-radius: 10px;
     width: 70%;
     margin: 1em;
+    margin-top: 2em;
     align-items: center;
 
     img {
       // margin: .5em;
+      border-radius: 10px;
       align-self: center;
       display: inline-block;
       max-width: 50%;
@@ -59,6 +61,7 @@
     .status {
       color: #247BA0;
       font-size: 14px;
+      font-weight: bolder;
     }
   }
 
@@ -121,6 +124,8 @@
     .submitted-by {
       margin: 1em;
       display: flex;
+      color: #247BA0;
+      font-weight: bold;
       p {
         margin: 3px;
       }
@@ -128,6 +133,7 @@
 
     .text-addon {
       margin: 1em;
+      font-weight: 500;
     }
      #count {
        margin-bottom: 4px;
@@ -139,6 +145,7 @@
       font-size: 24px;
     }
     .reader-1 {
+      font-size: 18px;
       border: solid 2px #50514F;
       border-radius: 10px;
       box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -173,10 +180,10 @@
   margin: 1em;
 
 form.contribution {
-  border: solid 2px #50514F;
+  // border: solid 2px #50514F;
   border-radius: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
+  // box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  // transition: 0.3s;
   display: flex;
   flex-direction: column;
   margin: 1em;
@@ -189,6 +196,7 @@ form.contribution {
   }
 
   textarea {
+  border-radius: 2px;
   border-style: hidden;
   border-bottom: 3px solid  #50514F;
   color: #247BA0;
@@ -200,7 +208,11 @@ form.contribution {
   font-family: 'Josefin Sans', sans-serif;
   word-wrap: break-word;
   word-break: break-all;
-  }
+
+}
+    textarea:hover {
+      background-color: #FFE066;
+    }
 
   .btn {
     background-color: #247BA0;
@@ -210,7 +222,7 @@ form.contribution {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 3px;
-    margin: 5px;
+    margin: 10px;
     padding: 5px;
     border: none;
     border-radius: 10px;
@@ -218,7 +230,9 @@ form.contribution {
   }
 
   .status {
-    font-style: italic;
+    color: #247BA0;
+    font-size: 14px;
+    font-weight: bolder;
   }
 
   // #like.btn.like-btn {
