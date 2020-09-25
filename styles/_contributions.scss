@@ -6,7 +6,23 @@
   align-items: center;
   justify-content: center;
 
+  .publish .btn {
+    background-color: #247BA0;
+    color: #FFE066;
+    font-size: 24px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin: 5px;
+    padding: 5px;
+    border: none;
+    border-radius: 10px;
+    // width: 75%;
+  }
+
   .single-story-box {
+    // background-color: ghostwhite;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -29,6 +45,7 @@
     p {
       margin: 1em 3em;
       font-size: 18px;
+      text-align: justify;
     }
 
     h1 {
@@ -46,6 +63,7 @@
   }
 
   .author {
+    // background-color: ghostwhite;
     border: solid 2px #50514F;
     border-radius: 10px;
     margin: 1em;
@@ -61,6 +79,8 @@
     .submitted-by {
       display: flex;
       margin: 1em;
+      color: #247BA0;
+      font-weight: bold;
 
       p {
         margin: 3px;

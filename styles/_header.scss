@@ -15,6 +15,7 @@ header {
         border-style: hidden;
         border-bottom: 3px solid  #50514F;
         background-color: #ffffff;
+        border-radius: 5px;
         resize: none;
         line-height: 1.5;
         font-size: 24px;
@@ -54,6 +55,7 @@ header {
 
         a {
           text-decoration: none;
+          margin-left: 5px;
         }
 
           a:hover {
