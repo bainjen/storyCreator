@@ -5,7 +5,7 @@ CREATE TABLE stories (
   name_id INTEGER REFERENCES users(id) NOT NULL,
   beginning_story TEXT NOT NULL,
   title VARCHAR(255) NOT NULL,
-  img_url VARCHAR(255) NOT NULL,
+  img_url TEXT NOT NULL,
   created_at TIMESTAMP NOT NULL DEFAULT NOW(),
   published BOOLEAN NOT NULL DEFAULT FALSE,
   completed_at TIMESTAMP NULL DEFAULT NULL
