@@ -61,8 +61,7 @@
     </form>
 
     <% for (let contribution of contributions) {
-      if (contribution.accept_at) { %>
-        <p>No Contributions Yet</p>
+      if (contribution.accepted_at) { %>
     <% } else { %>
     <div class='author' contribution-id=<%=contribution.id%>>
       <div class='submitted-by'>
