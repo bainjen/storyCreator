@@ -61,7 +61,7 @@
     </form>
 
     <% for (let contribution of contributions) {
-      if (!contribution.text_addon) { %>
+      if (contribution.accept_at) { %>
         <p>No Contributions Yet</p>
     <% } else { %>
     <div class='author' contribution-id=<%=contribution.id%>>
