@@ -111,7 +111,7 @@
             <p><%= contribution.name %></p>
           </div>
           <p class='text-addon'><%= contribution.text_addon %></p>
-          <p><%= contribution.accepted_at %></p>
+          <p class='hide'><%= contribution.accepted_at %></p>
           <div id="count" data-id=<%=story.id%>><%=contribution.count%></div>
           <button class="btn like-btn" id="like" type="button" story-id=<%=story.id%>
             contribution-id=<%=contribution.id%>> ✍️ </button>
