@@ -32,9 +32,10 @@
     margin: 1em;
     margin-top: 2em;
     align-items: center;
+    font-weight: bolder;
 
     img {
-      // margin: .5em;
+      margin: 1em;
       border-radius: 10px;
       align-self: center;
       display: inline-block;
@@ -80,10 +81,12 @@
        margin: 1em;
      }
     .submitted-by {
+      font-family: 'Pacifico', cursive;
       display: flex;
       margin: 1em;
       color: #247BA0;
       font-weight: bold;
+      font-size: 20px;
 
       p {
         margin: 3px;
@@ -122,17 +125,19 @@
     width: 70%;
 
     .submitted-by {
+      font-family: 'Pacifico', cursive;
       margin: 1em;
       display: flex;
       color: #247BA0;
       font-weight: bold;
+      font-size: 20px;
       p {
         margin: 3px;
       }
     }
 
     .text-addon {
-      margin: 1em;
+      margin-left: 1.5em;
       font-weight: 500;
     }
      #count {
@@ -206,7 +211,7 @@ form.contribution {
   line-height: 1.5;
   font-size: 24px;
   width: 80%;
-  height: 50%;
+  height: 40%;
   font-family: 'Josefin Sans', sans-serif;
   word-wrap: break-word;
   word-break: break-all;

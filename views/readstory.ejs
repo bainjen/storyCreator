@@ -38,7 +38,7 @@
         <% } %>
       <% } %>
 
-      <p><%= story.created_at %></p>
+      <p class ='hide'><%= story.created_at %></p>
       <p class='status'>STATUS: COMPLETED</p>
       <% } else { %>
       <h1><%= story.title %></h1>
@@ -52,7 +52,7 @@
         <% }
         } %>
       </div>
-      <p><%= story.created_at %></p>
+      <p class='hide'><%= story.created_at %></p>
       <p class='status'>STATUS: IN PROGRESS</p>
     </div>
 
