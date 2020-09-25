@@ -19,7 +19,7 @@ db.connect();
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
-//         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
+// The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 app.use(morgan('dev'));
 
 app.use(cookieSession({
@@ -40,26 +40,18 @@ app.use(express.static("public"));
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 
-//++++NEED TO ADD OUR OWN ROUTES HERE+++++
 const storyRoutes = require("./routes/stories-router")
 const usersRoutes = require("./routes/users-router");
 const loginRoutes = require("./routes/login-router");
 const contributionRoutes = require("./routes/contributions-router");
-// const myStoriesRoutes = require("./routes/mystories-router");
-// const storiesRoutes = require("./routes/stories-router");
-// const widgetsRoutes = require("./routes/widgets");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 
-//++++ASK MENTOR ABOUT API REFERENCE+++++
 app.use("/stories", storyRoutes);
 app.use("/users", usersRoutes);
 app.use("/login", loginRoutes);
 app.use("/contributions", contributionRoutes);
-// app.use("/mystories", myStoriesRoutes);
-// app.use("/login", loginRoutes(db));
-// app.use("/api/widgets", widgetsRoutes(db));
 
 // Home page
 // Warning: avoid creating more routes in this file!

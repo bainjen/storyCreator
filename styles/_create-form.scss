@@ -1,48 +1,46 @@
 .form-div {
-// border: solid thin black;
 margin: 1em;
 width: 35%;
 
-h3 {
-  margin: .5em;
-  font-size: 36px;
-}
+  h3 {
+    margin: .5em;
+    font-size: 36px;
+  }
 
-form {
-  margin: 1em;
-  display: flex;
-  flex-direction: column;
-}
+  form {
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+  }
 
-form label {
-  font-size: 28px;
-}
+  form label {
+    font-size: 28px;
+  }
 
-form textarea {
-  border-style: hidden;
-  border-bottom: 3px solid  #545149;
-  background-color: rgb(255, 224, 229);
-  resize: none;
-  line-height: 1.5;
-  font-size: 24px;
-  width: 80%;
-  font-family: 'Josefin Sans', sans-serif;
-  word-wrap: break-word;
-  word-break: break-all;
-  // height: 80px;
-}
+  form textarea {
+    border-style: hidden;
+    border-bottom: 3px solid  #545149;
+    background-color: rgb(255, 224, 229);
+    resize: none;
+    line-height: 1.5;
+    font-size: 24px;
+    width: 80%;
+    font-family: 'Josefin Sans', sans-serif;
+    word-wrap: break-word;
+    word-break: break-all;
+  }
 
- .btn {
-  font-size: 28px;
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  margin: 5px;
-  padding: 5px;
-  border: none;
-  border-radius: 10px;
-  width: 75%;
-}
+  .btn {
+    font-size: 28px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin: 5px;
+    padding: 5px;
+    border: none;
+    border-radius: 10px;
+    width: 75%;
+  }
 }
 

@@ -5,13 +5,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+ <!-- External JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
 
   <script type="text/javascript" src="/scripts/app.js"></script>
   <link rel='stylesheet' href='/styles/layout.css'>
 
-  <title>Document</title>
+  <title>BeStStOr1eZEvR</title>
 </head>
 
 <body>
@@ -22,16 +24,16 @@
     <div class='single-story-box'>
       <% if(story.published) {%>
       <h1><%= story.title %></h1>
-      <h2><%= story.name %></h2>
+      <h3>started by: <%= story.name %></h3>
       <img src="<%= story.img_url %>"></img>
       <p><%= story.beginning_story %></p>
       <p><%= story.created_at %></p>
-      <h3>COMPLETED</h3>
+      <p class ='status'>STATUS: COMPLETED</p>
     </div>
     <% } else { %>
     <div class='single-story-box'>
       <h1><%= story.title %></h1>
-      <h2><%= story.name %></h2>
+      <h3>started by: <%= story.name %></h3>
       <img src="<%= story.img_url %>"></img>
       <div class="append">
         <p><%= story.beginning_story %></p>
@@ -42,18 +44,17 @@
         } %>
       </div>
       <p><%= story.created_at %></p>
-      <h3>IN PROGRESS</h3>
+      <p class ='status'>STATUS: IN PROGRESS</p>
     </div>
 
     <% if(user == story.name_id) { %>
 
       <form class="publish" action='/stories/<%= story.id %>/publish' method='POST'>
-        <button class="publish" type="submit" publish-id=<%=story.id%>> THIS IS THE PUBLISH BUTTON </button>
+        <button class='btn' class="publish" type="submit" publish-id=<%=story.id%>>PUBLISH</button>
       </form>
 
     <% for (let contribution of contributions) {
       if (contribution.accepted_at) { %>
-    <div></div>
 
     <% } else { %>
     <div class='author' contribution-id=<%=contribution.id%>>
@@ -64,24 +65,21 @@
       <h3><%= contribution.text_addon %></h3>
       <p><%= contribution.accepted_at %></p>
 
-      <textarea id="mainvalue"><%= contribution.id %></textarea>
+      <textarea class='hide' id="mainvalue"><%= contribution.id %></textarea>
 
       <form class="add-contribution" action='/stories/<%= story.id %>' method='PUT'>
-        <button class="add-btn" type="submit" story-id=<%=story.id%> contribution-id=<%=contribution.id%>> Add This
-          Contribution</button>
+        <button class='btn' class="add-btn" type="submit" story-id=<%=story.id%> contribution-id=<%=contribution.id%>> add plz!</button>
       </form>
       <form class="delete-contribution" action='/stories/<%= story.id %>' method='POST'>
-        <button class="delete" type="sumbit">Delete This Contribution</button>
+        <button class='btn' class="delete" type="sumbit">no thx</button>
       </form>
     </div>
     <% } %>
     <% } %>
 
-
     </div>
-    <p>THIS IS THE SECRET SIGNAL💕</p>
+      <p>THIS IS THE SECRET SIGNAL💕</p>
     </div>
-
 
     <!-- Features - ADD delete and publish -->
     <% } else { %>
@@ -104,7 +102,7 @@
             <p>submitted by:</p>
             <p><%= contribution.name %></p>
           </div>
-          <h3><%= contribution.text_addon %></h3>
+          <p><%= contribution.text_addon %></p>
           <p><%= contribution.accepted_at %></p>
           <div id="count" data-id=<%=story.id%>><%=contribution.count%></div>
           <button class="btn like-btn" id="like" type="button" story-id=<%=story.id%>

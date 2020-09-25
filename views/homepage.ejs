@@ -3,14 +3,16 @@
 
 <head>
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel='stylesheet' href='/styles/layout.css'>
 
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
 
   <script type="text/javascript" src="/scripts/app.js"></script>>
+
   <title>Story Page</title>
 </head>
 
@@ -20,7 +22,7 @@
   <%- include('partials/_header') %>
 
   <main>
-    <h1>World's best Authors come here</h1>
+    <h1>world's best authors come here</h1>
     <section class='read+create'>
       <div class='browse-stories'>
         <% for(let story of stories) { %>
@@ -32,14 +34,12 @@
             <h1><%= story.title %></h1>
             <p><%= story.beginning_story %> </p>
           <div>
-            <p>THIS IS WHERE IN PROGRESS?PUBLISHED</p>
             <% if(story.published === false) {%>
-              <h3>IN PROGRESS</h3>
+              <p class ='status'>STATUS: IN PROGRESS</p>
             <% } else { %>
-              <h3>COMPLETED</h3>
+              <p class ='status'>STATUS: COMPLETED</p>
             <% } %>
           </div>
-
           </div>
         </div>
         <% } %>
