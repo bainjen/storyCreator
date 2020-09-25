@@ -4,6 +4,10 @@ const dbParams = require('../../lib/db.js');
 const db = new Pool(dbParams);
 db.connect();
 
+/**
+ * @param {*} getUsers
+ * @returns A function that grabs all users in the current database
+ */
 const getUsers = () => {
   return db.query("SELECT * FROM users;")
     .then((response) => {
@@ -11,6 +15,10 @@ const getUsers = () => {
     });
 };
 
+/**
+ * @param {*} getUserById
+ * @returns A function that grabs a specific user the from the database
+ */
 const getUserById = (id) => {
   return db.query("SELECT * FROM users WHERE id = $1;", [id])
     .then((response) => {
@@ -18,6 +26,10 @@ const getUserById = (id) => {
     });
 };
 
+/**
+ * @param {*} getUserStoriesByUserId
+ * @returns A function that returns stories related only to the current logged in user
+ */
 const getUserStoriesByUserId = (id) => {
   const queryString = `SELECT stories.*
   FROM stories
