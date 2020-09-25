@@ -31,11 +31,11 @@
       <p><%= story.beginning_story %></p>
 
       <% for (let contribution of contributions) { %>
-      <% if (contribution.accepted_at) { %>
-      <p><%= contribution.text_addon%>
-      <p>
+        <% if (contribution.accepted_at) { %>
+          <p><%= contribution.text_addon%></p>
         <% } %>
-        <% } %>
+      <% } %>
+
       <p><%= story.created_at %></p>
       <p class='status'>STATUS: COMPLETED</p>
       <% } else { %>
@@ -62,6 +62,7 @@
 
     <% for (let contribution of contributions) {
       if (!contribution.text_addon) { %>
+        <p>No Contributions Yet</p>
     <% } else { %>
     <div class='author' contribution-id=<%=contribution.id%>>
       <div class='submitted-by'>
@@ -104,8 +105,8 @@
 
       <div class='reader'>
         <% for (let contribution of contributions) { %>
-        <% if(!contribution) { %>
-        <p>NO CONTRIBUTIONS HERE TO SHOW</p>
+          <% if(!contribution.text_addon) { %>
+            <p>NO CONTRIBUTIONS HERE TO SHOW</p>
         <% } else { %>
         <div class='reader-1'>
           <div class='submitted-by'>
