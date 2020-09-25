@@ -27,7 +27,8 @@
     }
 
     p {
-      margin: 1em;
+      margin: 1em 3em;
+      font-size: 18px;
     }
 
     h1 {
@@ -36,6 +37,11 @@
 
     h2 {
       margin: 1em
+    }
+
+    .status {
+      color: #247BA0;
+      font-size: 14px;
     }
   }
 
